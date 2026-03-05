@@ -1,9 +1,10 @@
 package utils;
+
 import java.beans.PropertyChangeListener;
-//I have no idea on how any of this works, as there are no good examples in Joseph's slides,
-// apparently there is a connection between this and the VinylState interface, start by trying to do that.
-public interface VinylObserver extends PropertyChangeListener {
-  void  addPropertyChangeListener(PropertyChangeListener listener);
-  void removePropertyChangeListener(PropertyChangeListener listener);
-   void propertyChange();
+
+public class VinylObserver implements PropertyChangeListener {
+  @Override
+  public void propertyChange(java.beans.PropertyChangeEvent propertyChangeEvent) {
+    System.out.println("State changed from"+propertyChangeEvent.getOldValue()+" to " +propertyChangeEvent.getNewValue());
+  }
 }

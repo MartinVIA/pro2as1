@@ -2,15 +2,20 @@ package model;
 
 public class AvailableState implements VinylState {
 
+  @Override public String getName() {
+    return "";
+  }
+
   @Override public void reserve(Vinyl vinyl){
-        vinyl.setVinylState(new ReservedState());
+        vinyl.setCurrentVinylState(new ReservedState());
     }
 
   @Override public void borrow(Vinyl vinyl){
-        vinyl.setVinylState(new BorrowedState());
+        vinyl.setCurrentVinylState(new BorrowedState());
     }
 
   @Override public void returned(Vinyl vinyl){
         //Unused as available vinyls cannot be returned
     }
+
 }

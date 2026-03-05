@@ -1,15 +1,20 @@
 package model;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+
 public class Vinyl {
     private String title;
     private String artist;
-    private VinylState vinylState;
+    private VinylState currentVinylState;
+    private static final String currentVinylStateProperty = "VinylState";
     private int releaseYear;
+    private final PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
     public Vinyl(String title,String artist,int releaseYear){
-        this.title = title;
-      vinylState = new AvailableState();
-        this.artist = artist;
-        this.releaseYear = releaseYear;
+      this.title = title;
+      currentVinylState = new AvailableState();
+      this.artist = artist;
+      this.releaseYear = releaseYear;
     }
     public void setTitle(String title){
         this.title = title;
@@ -26,8 +31,19 @@ public class Vinyl {
     public void setReleaseYear(int releaseYear){
       this.releaseYear = releaseYear;
     }
-    public void setVinylState(VinylState newVinylState){
-      vinylState = newVinylState;
+    public void setCurrentVinylState(VinylState newVinylState){
+      VinylState oldState = currentVinylState;
+      currentVinylState = newVinylState;
+      propertyChangeSupport.firePropertyChange(currentVinylStateProperty, oldState.getName(), currentVinylState.getName());
+    }
+    public VinylState getCurrentVinylState(){
+      return currentVinylState;
+    }
+    public void addPropertyChangeListener(PropertyChangeListener listener){
+    propertyChangeSupport.addPropertyChangeListener(listener);
+    }
+    public void removePropertyChangeListener(PropertyChangeListener listener){
+    propertyChangeSupport.removePropertyChangeListener(listener);
     }
 
 }
