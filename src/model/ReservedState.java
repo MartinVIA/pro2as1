@@ -3,7 +3,7 @@ package model;
 public class ReservedState implements VinylState{
 
   @Override public String getName() {
-    return "";
+    return "Reserved";
   }
 
   @Override public void reserve(Vinyl vinyl) {
