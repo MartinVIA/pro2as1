@@ -6,15 +6,15 @@ public class AvailableState implements VinylState {
     return "";
   }
 
-  @Override public void reserve(Vinyl vinyl){
+  @Override public void reserveVinyl(Vinyl vinyl){
         vinyl.setCurrentVinylState(new ReservedState());
     }
 
-  @Override public void borrow(Vinyl vinyl){
+  @Override public void borrowVinyl(Vinyl vinyl){
         vinyl.setCurrentVinylState(new BorrowedState());
     }
 
-  @Override public void returned(Vinyl vinyl){
+  @Override public void returnVinyl(Vinyl vinyl){
         //Unused as available vinyls cannot be returned
     }
 

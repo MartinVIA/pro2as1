@@ -1,9 +1,12 @@
 package model;
 
-public interface VinylState   {
+import utils.VinylObserver;
+
+public interface VinylState  extends VinylObserver
+{
     String getName();
-    void reserve(Vinyl vinyl);
-    void borrow(Vinyl vinyl);
-    void returned(Vinyl vinyl);
+    void reserveVinyl(Vinyl vinyl);
+    void borrowVinyl(Vinyl vinyl);
+    void returnVinyl(Vinyl vinyl);
 
 }
