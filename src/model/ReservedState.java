@@ -6,7 +6,7 @@ import java.beans.PropertyChangeListener;
 public class ReservedState implements VinylState{
 
   @Override public String getName() {
-    return "";
+    return "Reserved";
   }
 
   @Override public void reserveVinyl(Vinyl vinyl) {
