@@ -2,7 +2,7 @@ package model;
 
 import utils.VinylObserver;
 
-public interface VinylState  extends VinylObserver
+public interface VinylState
 {
     String getName();
     void reserveVinyl(Vinyl vinyl);

@@ -19,20 +19,5 @@ public class BorrowedState implements VinylState{
   @Override public void returnVinyl(Vinyl vinyl) {
     vinyl.setCurrentVinylState(new AvailableState());
   }
-
-  @Override public void addListener(PropertyChangeListener listener)
-  {
-
-  }
-
-  @Override public void removeListener(PropertyChangeListener listener)
-  {
-
-  }
-
-  @Override public void propertyChange(PropertyChangeEvent evt)
-  {
-
-  }
 }
 

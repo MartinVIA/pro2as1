@@ -34,11 +34,14 @@ public class Vinyl {
     public void setCurrentVinylState(VinylState newVinylState){
       VinylState oldState = currentVinylState;
       currentVinylState = newVinylState;
+      //When Vinyl State changes, get the name of the old State, and the name of the new state
       propertyChangeSupport.firePropertyChange(currentVinylStateProperty, oldState.getName(), currentVinylState.getName());
+
     }
     public VinylState getCurrentVinylState(){
       return currentVinylState;
     }
+
     public void addPropertyChangeListener(PropertyChangeListener listener){
     propertyChangeSupport.addPropertyChangeListener(listener);
     }

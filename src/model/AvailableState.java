@@ -17,5 +17,4 @@ public class AvailableState implements VinylState {
   @Override public void returnVinyl(Vinyl vinyl){
         //Unused as available vinyls cannot be returned
     }
-
 }

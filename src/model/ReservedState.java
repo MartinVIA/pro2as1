@@ -21,18 +21,4 @@ public class ReservedState implements VinylState{
     vinyl.setCurrentVinylState(new AvailableState());
   }
 
-  @Override public void addListener(PropertyChangeListener listener)
-  {
-
-  }
-
-  @Override public void removeListener(PropertyChangeListener listener)
-  {
-
-  }
-
-  @Override public void propertyChange(PropertyChangeEvent evt)
-  {
-
-  }
 }
