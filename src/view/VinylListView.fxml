@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.VinylListController">
+   <children>
+      <TableView fx:id="tableView" layoutX="50.0" layoutY="37.0" prefHeight="325.0" prefWidth="500.0">
+        <columns>
+          <TableColumn prefWidth="165.59998321533203" text="Title of Vinyl" />
+          <TableColumn minWidth="0.0" prefWidth="67.0" text="Year" />
+            <TableColumn minWidth="8.199981689453125" prefWidth="125.79998779296875" text="Artist" />
+            <TableColumn prefWidth="139.99996948242188" text="Lending State" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

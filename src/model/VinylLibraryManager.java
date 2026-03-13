@@ -2,7 +2,7 @@ package model;
 import utils.VinylObserver;
 import java.util.ArrayList;
 
-public class VinylLibraryManager
+public class VinylLibraryManager implements VinylModel
 {
   private ArrayList<Vinyl> vinylList= new ArrayList<>();
 
