@@ -31,11 +31,14 @@ public class Vinyl {
     public void setReleaseYear(int releaseYear){
       this.releaseYear = releaseYear;
     }
+    public int getReleaseYear(){
+      return releaseYear;
+    }
     public void setCurrentVinylState(VinylState newVinylState){
       VinylState oldState = currentVinylState;
       currentVinylState = newVinylState;
       //When Vinyl State changes, get the name of the old State, and the name of the new state
-      propertyChangeSupport.firePropertyChange(currentVinylStateProperty, oldState.getName(), currentVinylState.getName());
+      propertyChangeSupport.firePropertyChange(currentVinylStateProperty, oldState.toString(), currentVinylState.toString());
 
     }
     public VinylState getCurrentVinylState(){

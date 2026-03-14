@@ -9,10 +9,18 @@ import model.ReservedState;
 import model.BorrowedState;
 import model.VinylLibraryManager;
 import utils.VinylObserver;
+import view.ViewHandler;
+import viewModel.ViewModelFactory;
+
+import java.io.IOException;
 
 public class MainVinylLibrary extends Application
 {
   public static void main(String[] args) {
+
+  }
+  @Override
+  public void start(Stage primaryStage) throws IOException {
     VinylLibraryManager manager = new VinylLibraryManager();
     manager.addVinyl("Hamburger","Biggie Cheese", 2026);
     manager.getVinyl(0).setCurrentVinylState(new BorrowedState());
@@ -20,5 +28,8 @@ public class MainVinylLibrary extends Application
     manager.getVinyl(0).setCurrentVinylState(new ReservedState());
     //"State has been changed from oldState.getName to newState.getName"
     manager.getVinyl(0).setCurrentVinylState(new AvailableState());
+    ViewHandler viewHandler = new ViewHandler(new ViewModelFactory(manager));
+    viewHandler.start(new Stage());
   }
 }
+

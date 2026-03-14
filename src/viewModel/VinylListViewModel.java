@@ -1,13 +1,11 @@
 package viewModel;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import model.Vinyl;
 import model.VinylModel;
 
-public class VinylListViewModel
-{
+public class VinylListViewModel {
   // Platform.runLater() - potentially needed?
   private VinylModel model;
   private ObservableList<Vinyl> vinylList;
@@ -15,26 +13,21 @@ public class VinylListViewModel
 
   public VinylListViewModel( VinylModel model ) {
     this.model = model;
-    title = new SimpleStringProperty();
-    year = new SimpleIntegerProperty();
-    artist = new SimpleStringProperty();
+    vinylList = FXCollections.observableArrayList();
+    loadVinyls();
   }
-
+  private void loadVinyls() {
+    vinylList.addAll(model.getVinylList());
+  }
+  public ObservableList<Vinyl> getVinylList() {
+    return vinylList;
+  }
+  public void setIndex(int i){
+    index = i;
+  }
   public void clear(){
-    title.set(null);
-    year.setValue(67);
-    artist.set(null);
   }
-  public StringProperty titleProperty()
-  {
-    return title;
-  }
-
-  public IntegerProperty yearProperty() {
-    return year;
-  }
-
-  public StringProperty artistProperty() {
-    return artist;
+  public Vinyl getSelectedVinyl(){
+    return vinylList.get(index);
   }
 }

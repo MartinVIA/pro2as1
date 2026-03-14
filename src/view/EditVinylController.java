@@ -14,21 +14,19 @@ public class EditVinylController {
   @FXML private Button borrowButton;
   @FXML private Button availableButton;
   @FXML private Button reserveButton;
-  private ViewHandler viewHandler;
+  @FXML private Button saveButton;
   private EditVinylViewModel viewModel;
   private Region root;
   private Stage stage;
 
-  public void init(ViewHandler viewHandler, EditVinylViewModel viewModel, Region root) {
-    this.viewHandler = viewHandler;
+  public void init(EditVinylViewModel viewModel) {
     this.viewModel = viewModel;
-    this.root = root;
     titleField.textProperty().bindBidirectional(viewModel.getTitleProperty());
     artistField.textProperty().bindBidirectional(viewModel.getArtistProperty());
     viewModel.getYearProperty().addListener((obs, oldVal, newVal) ->
         releaseYearField.setText(String.valueOf(newVal)));
     currentVinylStateLabel.textProperty().bind(
-          Bindings.createStringBinding(() -> viewModel.getVinylStateProperty().get().getName(), viewModel.getVinylStateProperty()));
+          Bindings.createStringBinding(() -> viewModel.getVinylStateProperty().get().toString(), viewModel.getVinylStateProperty()));
   }
 
   public void handleAvailableButton(){
@@ -50,5 +48,10 @@ public class EditVinylController {
 
   public void setStage(Stage stage) {
     this.stage = stage;
+  }
+
+  public Region getRoot()
+  {
+    return root;
   }
 }

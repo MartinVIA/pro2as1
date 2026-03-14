@@ -8,17 +8,15 @@ public class ViewModelFactory {
   private VinylListViewModel vinylListViewModel;
   private EditVinylViewModel editVinylViewModel;
 
-  public ViewModelFactory(VinylModel model)
-  {
+  public ViewModelFactory(VinylModel model) {
     vinylListViewModel = new VinylListViewModel(model);
-    editVinylViewModel = new EditVinylViewModel(model);
+    editVinylViewModel = new EditVinylViewModel();
   }
 
   public VinylListViewModel getVinylListViewModel()
   { return vinylListViewModel;}
 
-  public EditVinylViewModel getEditVinylViewModel()
-  {
+  public EditVinylViewModel getEditVinylViewModel() {
     return editVinylViewModel;
   }
 }

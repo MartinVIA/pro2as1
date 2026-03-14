@@ -16,5 +16,11 @@ public class VinylLibraryManager implements VinylModel
   public Vinyl getVinyl(int index) {
     return vinylList.get(index);
   }
+  public int getVinylCount(){
+    return vinylList.size();
+  }
+ public ArrayList<Vinyl> getVinylList(){
+    return vinylList;
+  }
 
 }

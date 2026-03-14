@@ -2,7 +2,7 @@ package model;
 
 public class AvailableState implements VinylState {
 
-  @Override public String getName() {
+  @Override public String toString() {
     return "Available";
   }
 

@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
+import model.Vinyl;
 import viewModel.ViewModelFactory;
 
 public class ViewHandler {
@@ -14,23 +15,19 @@ public class ViewHandler {
   private VinylListController vinylListController;
   private EditVinylController editVinylController;
 
-  public ViewHandler(ViewModelFactory viewModelFactory)
-  {
+  public ViewHandler(ViewModelFactory viewModelFactory) {
     this.viewModelFactory = viewModelFactory;
     currentScene = new Scene(new Region());
   }
 
-  public void start(Stage primaryStage)
-  {
+  public void start(Stage primaryStage) {
     this.primaryStage = primaryStage;
-    openView("");
+    openView("vinylList");
   }
 
-  public void openView(String id)
-  {
+  public void openView(String id) {
     Region root = null;
-    switch(id)
-    {
+    switch(id) {
       case "vinylList":
         root = loadVinylListView("VinylListView.fxml");
         break;
@@ -78,7 +75,7 @@ public class ViewHandler {
         loader.setLocation(getClass().getResource(fxml));
         root = loader.load();
         editVinylController = loader.getController();
-        editVinylController.init(this, viewModelFactory.getEditVinylViewModel(), root);
+        editVinylController.init(viewModelFactory.getEditVinylViewModel());
       }
       catch(Exception e) {
         e.printStackTrace();

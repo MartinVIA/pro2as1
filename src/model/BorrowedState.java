@@ -5,7 +5,7 @@ import java.beans.PropertyChangeListener;
 
 public class BorrowedState implements VinylState{
 
-  @Override public String getName() {
+  @Override public String toString() {
     return "Borrowed";
   }
 

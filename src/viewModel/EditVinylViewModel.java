@@ -1,32 +1,43 @@
 package viewModel;
 
 import javafx.beans.property.*;
+import model.Vinyl;
 import model.VinylModel;
 import model.VinylState;
 
-public class EditVinylViewModel
-{
+public class EditVinylViewModel {
   // Platform.runLater() - potentially needed?
+  private Vinyl vinyl;
   private VinylModel model;
   private StringProperty title;
-  private StringProperty year;
+  private IntegerProperty year;
   private StringProperty artist;
   private ObjectProperty<VinylState> vinylState;
 
-  public EditVinylViewModel(VinylModel model) {
-    this.model = model;
-    title = new SimpleStringProperty();
-    year = new SimpleStringProperty();
-    artist = new SimpleStringProperty();
-    vinylState = new SimpleObjectProperty<VinylState>();
+  public EditVinylViewModel(Vinyl vinyl) {
+    this.vinyl = vinyl;
+    title = new SimpleStringProperty(vinyl.getTitle());
+    year = new SimpleIntegerProperty(vinyl.getReleaseYear());
+    artist = new SimpleStringProperty(vinyl.getArtist());
+    vinylState = new SimpleObjectProperty<VinylState>(vinyl.getCurrentVinylState());
   }
+  public EditVinylViewModel(){
+  }
+  public void setVinyl(Vinyl vinyl){
+    this.vinyl = vinyl;
+    title = new SimpleStringProperty(vinyl.getTitle());
+    year = new SimpleIntegerProperty(vinyl.getReleaseYear());
+    artist = new SimpleStringProperty(vinyl.getArtist());
+    vinylState = new SimpleObjectProperty<VinylState>(vinyl.getCurrentVinylState());
+  }
+
   public StringProperty getTitleProperty(){
     return title;
   }
   public StringProperty getArtistProperty(){
     return artist;
   }
-  public StringProperty getYearProperty(){
+  public IntegerProperty getYearProperty(){
     return year;
   }
   public ObjectProperty<VinylState> getVinylStateProperty(){
