@@ -7,6 +7,7 @@ public class VinylListController {
   private ViewHandler viewHandler;
   private VinylListViewModel model;
   private Region root;
+
   public void init(ViewHandler viewHandler, VinylListViewModel vinylListViewModel, Region root) {
   this.root = root;
   this.viewHandler = viewHandler;

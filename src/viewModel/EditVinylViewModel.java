@@ -33,6 +33,11 @@ public class EditVinylViewModel
     return vinylState;
   }
 
+  public Vinyl getSelectedVinyl(){
+    return vinyl;
+  }
+
+
 
 
 }

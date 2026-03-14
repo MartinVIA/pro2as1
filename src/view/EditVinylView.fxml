@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
@@ -13,5 +14,32 @@
          <font>
             <Font size="16.0" />
          </font></Text>
+      <TextField fx:id="titleField" layoutX="176.0" layoutY="61.0" prefHeight="26.0" prefWidth="304.0" />
+      <TextField fx:id="artistField" layoutX="176.0" layoutY="150.0" prefHeight="26.0" prefWidth="304.0" />
+      <Label layoutX="83.0" layoutY="149.0" text="Artist:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="90.0" layoutY="108.0" text="Year:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="releaseYearField" layoutX="176.0" layoutY="108.0" />
+      <Button fx:id="availableButton" layoutX="176.0" layoutY="251.0" mnemonicParsing="false" text="Available" />
+      <Button fx:id="reserveButton" layoutX="274.0" layoutY="251.0" mnemonicParsing="false" text="Reserved" />
+      <Button fx:id="borrowButton" layoutX="380.0" layoutY="251.0" mnemonicParsing="false" text="Borrowed" />
+      <Button fx:id="saveButton" layoutX="274.0" layoutY="326.0" mnemonicParsing="false" text="Save" />
+      <Label layoutX="54.0" layoutY="200.0" text="Current State:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="currentVinylStateLabel" layoutX="241.0" layoutY="201.0" text="currentStateLabel">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

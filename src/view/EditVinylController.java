@@ -3,7 +3,7 @@ import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Region;
-import model.VinylState;
+import javafx.stage.Stage;
 import viewModel.EditVinylViewModel;
 
 public class EditVinylController {
@@ -17,6 +17,7 @@ public class EditVinylController {
   private ViewHandler viewHandler;
   private EditVinylViewModel viewModel;
   private Region root;
+  private Stage stage;
 
   public void init(ViewHandler viewHandler, EditVinylViewModel viewModel, Region root) {
     this.viewHandler = viewHandler;
@@ -29,12 +30,25 @@ public class EditVinylController {
     currentVinylStateLabel.textProperty().bind(
           Bindings.createStringBinding(() -> viewModel.getVinylStateProperty().get().getName(), viewModel.getVinylStateProperty()));
   }
+
+  public void handleAvailableButton(){
+    //int selectedIndex = VinylListController.vinylTable.getSelectionModel().getSelectedIndex();
+
+  }
+
+  public void handleReservedButton(){
+
+  }
+
+  public void handleBorrowedButton(){
+
+  }
   //resets the window by clearing all the fields
   public void reset() {
 
   }
 
-  public Region getRoot() {
-    return root;
+  public void setStage(Stage stage) {
+    this.stage = stage;
   }
 }

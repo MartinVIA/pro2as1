@@ -2,7 +2,7 @@ package viewModel;
 
 import model.VinylLibraryManager;
 import model.VinylModel;
-import model.VinylState;
+
 
 public class ViewModelFactory {
   private VinylListViewModel vinylListViewModel;

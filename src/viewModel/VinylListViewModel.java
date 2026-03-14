@@ -10,9 +10,8 @@ public class VinylListViewModel
 {
   // Platform.runLater() - potentially needed?
   private VinylModel model;
-  private StringProperty title;
-  private IntegerProperty year;
-  private StringProperty artist;
+  private ObservableList<Vinyl> vinylList;
+  private int index;
 
   public VinylListViewModel( VinylModel model ) {
     this.model = model;

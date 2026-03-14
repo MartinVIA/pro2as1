@@ -1,12 +1,17 @@
 package main;
 
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import model.AvailableState;
 import model.ReservedState;
 import model.BorrowedState;
 import model.VinylLibraryManager;
 import utils.VinylObserver;
 
-public class MainVinylLibrary {
+public class MainVinylLibrary extends Application
+{
   public static void main(String[] args) {
     VinylLibraryManager manager = new VinylLibraryManager();
     manager.addVinyl("Hamburger","Biggie Cheese", 2026);

@@ -89,4 +89,8 @@ public class ViewHandler {
     return editVinylController.getRoot();
   }
 
+  public ViewModelFactory getViewModelFactory()
+  {
+    return viewModelFactory;
+  }
 }
