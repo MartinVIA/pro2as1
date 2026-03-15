@@ -3,9 +3,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.VinylListController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.VinylListController">
    <children>
-       <TableView fx:id="vinylTable" layoutX="50.0" layoutY="25.0" prefHeight="325.0" prefWidth="500.0">
+       <TableView fx:id="vinylTable" layoutX="50.0" layoutY="25.0" prefHeight="325.0" prefWidth="520.0">
            <columns>
                <TableColumn fx:id="title" prefWidth="165.59998321533203" text="Title of Vinyl" />
                <TableColumn fx:id="year" minWidth="0.0" prefWidth="67.0" text="Year" />

@@ -1,28 +1,28 @@
 package viewModel;
 
 import javafx.beans.property.*;
-import model.Vinyl;
-import model.VinylModel;
-import model.VinylState;
+import model.*;
 
 public class EditVinylViewModel {
   // Platform.runLater() - potentially needed?
   private Vinyl vinyl;
-  private VinylModel model;
-  private StringProperty title;
-  private IntegerProperty year;
-  private StringProperty artist;
-  private ObjectProperty<VinylState> vinylState;
+  private final VinylModel model;
+  private StringProperty title = new SimpleStringProperty();
+  private StringProperty artist = new SimpleStringProperty();
+  private StringProperty reserveName = new SimpleStringProperty();
+  private IntegerProperty year = new SimpleIntegerProperty();
+  private ObjectProperty<VinylState> vinylState = new SimpleObjectProperty<>();
 
   public EditVinylViewModel(VinylModel model){
     this.model = model;
   }
   public void setVinyl(Vinyl vinyl){
     this.vinyl = vinyl;
-    title = new SimpleStringProperty(vinyl.getTitle());
-    year = new SimpleIntegerProperty(vinyl.getReleaseYear());
-    artist = new SimpleStringProperty(vinyl.getArtist());
-    vinylState = new SimpleObjectProperty<VinylState>(vinyl.getCurrentVinylState());
+    title.set(vinyl.getTitle());
+    artist.set(vinyl.getArtist());
+    reserveName.set(vinyl.getReserveName());
+    year.set(vinyl.getReleaseYear());
+    vinylState.set(vinyl.getCurrentVinylState());
   }
 
   public StringProperty getTitleProperty(){
@@ -30,6 +30,9 @@ public class EditVinylViewModel {
   }
   public StringProperty getArtistProperty(){
     return artist;
+  }
+  public StringProperty getReservedNameProperty(){
+    return reserveName;
   }
   public IntegerProperty getYearProperty(){
     return year;
@@ -41,7 +44,11 @@ public class EditVinylViewModel {
   public Vinyl getSelectedVinyl(){
     return vinyl;
   }
-
+  public void setAvailableVinylState( ) {
+    VinylState available = new AvailableState();
+    vinylState.set(available);
+    vinyl.setCurrentVinylState(available);
+  }
 
 
 

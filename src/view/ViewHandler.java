@@ -46,9 +46,9 @@ public class ViewHandler {
   public void closeView() {
     primaryStage.close();
   }
-
+String name = "Nandor";
   private Region loadVinylListView(String fxml) {
-    Region root = null;
+    Region root;
     if (vinylListController == null) {
       try {
         FXMLLoader loader = new FXMLLoader();
@@ -67,7 +67,7 @@ public class ViewHandler {
   }
 
   private Region loadEditVinylView(String fxml) {
-    Region root = null;
+    Region root;
     if (editVinylController == null) {
       try {
         FXMLLoader loader = new FXMLLoader();

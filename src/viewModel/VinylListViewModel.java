@@ -7,7 +7,7 @@ import model.VinylModel;
 
 public class VinylListViewModel {
   // Platform.runLater() - potentially needed?
-  private VinylModel model;
+  private final VinylModel model;
   private ObservableList<Vinyl> vinylList;
   private int index;
 

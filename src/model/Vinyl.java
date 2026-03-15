@@ -44,7 +44,12 @@ public class Vinyl {
     public VinylState getCurrentVinylState(){
       return currentVinylState;
     }
-
+    public void setReserveName(String reserveName){
+      this.reserveName = reserveName;
+    }
+    public String getReserveName(){
+      return reserveName;
+    }
     public void addPropertyChangeListener(PropertyChangeListener listener){
     propertyChangeSupport.addPropertyChangeListener(listener);
     }

@@ -5,8 +5,8 @@ import model.VinylModel;
 
 
 public class ViewModelFactory {
-  private VinylListViewModel vinylListViewModel;
-  private EditVinylViewModel editVinylViewModel;
+  private final VinylListViewModel vinylListViewModel;
+  private final EditVinylViewModel editVinylViewModel;
 
   public ViewModelFactory(VinylModel model) {
     vinylListViewModel = new VinylListViewModel(model);

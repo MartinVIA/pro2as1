@@ -51,11 +51,12 @@ public class VinylListController {
   public void refresh() {
 
   }
+
   public void handleEdit(){
     int selectedIndex = vinylTable.getSelectionModel().getSelectedIndex();
-    if(selectedIndex == -1){
+    if(selectedIndex  >= 0) {
     model.setIndex(selectedIndex);
-    //ViewHandler --> ViewModelFactory --> EditVinylViewModel--> SetVinyl(VinylListViewModel.getSelectedVinyl) I am going to hang myself
+    //ViewHandler --> ViewModelFactory --> EditVinylViewModel--> SetVinyl(VinylListViewModel.getSelectedVinyl)
     viewHandler.getViewModelFactory().getEditVinylViewModel().setVinyl(model.getSelectedVinyl());
     viewHandler.openView("editVinyl");
     }

@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.EditVinylController">
+<AnchorPane prefHeight="460.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.EditVinylController">
    <children>
       <Text layoutX="14.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="236.751953125">
          <font>
@@ -14,8 +14,8 @@
          <font>
             <Font size="16.0" />
          </font></Text>
-      <TextField fx:id="titleField" layoutX="176.0" layoutY="61.0" prefHeight="26.0" prefWidth="304.0" />
-      <TextField fx:id="artistField" layoutX="176.0" layoutY="150.0" prefHeight="26.0" prefWidth="304.0" />
+      <TextField fx:id="titleField" editable="false" layoutX="176.0" layoutY="61.0" prefHeight="26.0" prefWidth="304.0" />
+      <TextField fx:id="artistField" editable="false" layoutX="176.0" layoutY="150.0" prefHeight="26.0" prefWidth="304.0" />
       <Label layoutX="83.0" layoutY="149.0" text="Artist:">
          <font>
             <Font size="16.0" />
@@ -26,17 +26,20 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="releaseYearField" layoutX="176.0" layoutY="108.0" />
-      <Button fx:id="availableButton" layoutX="176.0" layoutY="251.0" mnemonicParsing="false" onAction="#handleAvailableButton" text="Available" />
-      <Button fx:id="reserveButton" layoutX="274.0" layoutY="251.0" mnemonicParsing="false" onAction="#handleReservedButton" text="Reserved" />
-      <Button fx:id="borrowButton" layoutX="380.0" layoutY="251.0" mnemonicParsing="false" onAction="#handleBorrowedButton" text="Borrowed" />
-      <Button fx:id="saveButton" layoutX="274.0" layoutY="326.0" mnemonicParsing="false" text="Save" />
-      <Label layoutX="54.0" layoutY="200.0" text="Current State:">
+      <TextField fx:id="releaseYearField" editable="false" layoutX="176.0" layoutY="108.0" />
+      <Button fx:id="availableButton" layoutX="175.0" layoutY="288.0" mnemonicParsing="false" onAction="#handleAvailableButton" text="Available" />
+      <Button fx:id="reserveButton" layoutX="273.0" layoutY="288.0" mnemonicParsing="false" onAction="#handleReservedButton" text="Reserved" />
+      <Button fx:id="borrowButton" layoutX="379.0" layoutY="288.0" mnemonicParsing="false" onAction="#handleBorrowedButton" text="Borrowed" />
+      <Button fx:id="saveButton" layoutX="327.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleSave" text="Save" />
+      <Label layoutX="35.0" layoutY="238.0" text="Current State:">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="currentVinylStateLabel" layoutX="241.0" layoutY="201.0" text="currentStateLabel">
+      <Button fx:id="cancelButton" layoutX="224.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleCancel" text="Cancel" />
+      <TextField fx:id="currentVinylStateField" editable="false" layoutX="176.0" layoutY="238.0" prefHeight="26.0" prefWidth="304.0" />
+      <TextField fx:id="reserveNameField" layoutX="175.0" layoutY="200.0" prefHeight="26.0" prefWidth="304.0" />
+      <Label layoutX="32.0" layoutY="200.0" text="Reserve Name:">
          <font>
             <Font size="16.0" />
          </font>

@@ -10,11 +10,13 @@ public class EditVinylController {
   @FXML private TextField titleField;
   @FXML private TextField artistField;
   @FXML private TextField releaseYearField;
-  @FXML private Label currentVinylStateLabel;
+  @FXML private TextField currentVinylStateField;
+  @FXML private TextField reserveNameField;
   @FXML private Button borrowButton;
   @FXML private Button availableButton;
   @FXML private Button reserveButton;
   @FXML private Button saveButton;
+  @FXML private Button cancelButton;
   private EditVinylViewModel viewModel;
   private ViewHandler viewHandler;
   private Region root;
@@ -28,7 +30,11 @@ public class EditVinylController {
     artistField.textProperty().bindBidirectional(viewModel.getArtistProperty());
     viewModel.getYearProperty().addListener((obs, oldVal, newVal) ->
         releaseYearField.setText(String.valueOf(newVal)));
-    currentVinylStateLabel.textProperty().bind(
+    //TODO ReserveName does not save when pressing the save button
+    reserveNameField.textProperty().bindBidirectional(viewModel.getReservedNameProperty());
+    currentVinylStateField.setEditable(false);
+    //TODO Lending State does not save when pressing the save button, only in the edit view, not in Vinyl List view
+    currentVinylStateField.textProperty().bind(
           Bindings.createStringBinding(() -> viewModel.getVinylStateProperty().get().toString(), viewModel.getVinylStateProperty()));
   }
   @FXML
@@ -37,8 +43,7 @@ public class EditVinylController {
   }
 
   public void handleAvailableButton(){
-    //int selectedIndex = VinylListController.vinylTable.getSelectionModel().getSelectedIndex();
-
+    viewModel.setAvailableVinylState();
   }
 
   public void handleReservedButton(){
@@ -47,6 +52,12 @@ public class EditVinylController {
 
   public void handleBorrowedButton(){
 
+  }
+  public void handleCancel(){
+    viewHandler.openView("vinylList");
+  }
+  public void handleSave(){
+    viewHandler.openView("vinylList");
   }
   //resets the window by clearing all the fields
   public void reset() {
