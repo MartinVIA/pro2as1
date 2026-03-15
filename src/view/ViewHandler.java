@@ -4,7 +4,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
-import model.Vinyl;
 import viewModel.ViewModelFactory;
 
 public class ViewHandler {

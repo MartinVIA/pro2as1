@@ -6,15 +6,17 @@ public class Vinyl {
     private String title;
     private String artist;
     private VinylState currentVinylState;
+    private String reserveName;
     private static final String currentVinylStateProperty = "VinylState";
     private int releaseYear;
     private final PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
-    public Vinyl(String title,String artist,int releaseYear){
+    public Vinyl(String title, String artist, int releaseYear){
       this.title = title;
       currentVinylState = new AvailableState();
       this.artist = artist;
       this.releaseYear = releaseYear;
+      reserveName = "";
     }
     public void setTitle(String title){
         this.title = title;
@@ -34,6 +36,7 @@ public class Vinyl {
     public int getReleaseYear(){
       return releaseYear;
     }
+
     public void setCurrentVinylState(VinylState newVinylState){
       VinylState oldState = currentVinylState;
       currentVinylState = newVinylState;

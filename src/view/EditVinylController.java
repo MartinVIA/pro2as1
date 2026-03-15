@@ -47,11 +47,11 @@ public class EditVinylController {
   }
 
   public void handleReservedButton(){
-
+    viewModel.setReservedVinylState();
   }
 
   public void handleBorrowedButton(){
-
+    viewModel.setBorrowedVinylState();
   }
   public void handleCancel(){
     viewHandler.openView("vinylList");

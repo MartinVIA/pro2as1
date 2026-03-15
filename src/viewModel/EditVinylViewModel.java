@@ -50,6 +50,15 @@ public class EditVinylViewModel {
     vinyl.setCurrentVinylState(available);
   }
 
+  public void setReservedVinylState() {
+    VinylState reserved = new ReservedState();
+    vinylState.set(reserved);
+    vinyl.setCurrentVinylState(reserved);
+  }
 
-
+  public void setBorrowedVinylState() {
+    VinylState borrowed = new BorrowedState();
+    vinylState.set(borrowed);
+    vinyl.setCurrentVinylState(borrowed);
+  }
 }
