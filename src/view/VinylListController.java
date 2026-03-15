@@ -1,5 +1,8 @@
 package view;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,7 +13,6 @@ import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import model.Vinyl;
 import model.VinylState;
-import viewModel.EditVinylViewModel;
 import viewModel.VinylListViewModel;
 
 import javafx.scene.control.TableView;
@@ -33,14 +35,16 @@ public class VinylListController {
   this.root = root;
   this.viewHandler = viewHandler;
   model = vinylListViewModel;
+  title.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getTitle()));
+  artist.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getArtist()));
+  year.setCellValueFactory(cell -> new SimpleIntegerProperty(cell.getValue().getReleaseYear()).asObject());
+  lendingState.setCellValueFactory(cell -> new SimpleObjectProperty<>(cell.getValue().getCurrentVinylState()));
+
+  vinylTable.getItems().addAll(model.getVinylList());
   }
   @FXML
   public void initialize(){
-    title.setCellValueFactory(new PropertyValueFactory<>("Vinyl Title"));
-    artist.setCellValueFactory(new PropertyValueFactory<>("Artist"));
-    year.setCellValueFactory(new PropertyValueFactory<>("Year"));
-    lendingState.setCellValueFactory(new PropertyValueFactory<>("Lending State"));
-    vinylTable.getItems().addAll(model.getVinylList());
+//Leave it blank, it doesn't depend on any other injected data
   }
 
   //refreshes the table view to show the latest information about the vinyls
@@ -51,6 +55,8 @@ public class VinylListController {
     int selectedIndex = vinylTable.getSelectionModel().getSelectedIndex();
     if(selectedIndex == -1){
     model.setIndex(selectedIndex);
+    //ViewHandler --> ViewModelFactory --> EditVinylViewModel--> SetVinyl(VinylListViewModel.getSelectedVinyl) I am going to hang myself
+    viewHandler.getViewModelFactory().getEditVinylViewModel().setVinyl(model.getSelectedVinyl());
     viewHandler.openView("editVinyl");
     }
   }

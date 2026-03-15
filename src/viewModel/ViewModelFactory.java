@@ -10,7 +10,7 @@ public class ViewModelFactory {
 
   public ViewModelFactory(VinylModel model) {
     vinylListViewModel = new VinylListViewModel(model);
-    editVinylViewModel = new EditVinylViewModel();
+    editVinylViewModel = new EditVinylViewModel(model);
   }
 
   public VinylListViewModel getVinylListViewModel()

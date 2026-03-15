@@ -29,10 +29,10 @@ public class ViewHandler {
     Region root = null;
     switch(id) {
       case "vinylList":
-        root = loadVinylListView("VinylListView.fxml");
+        root = loadVinylListView("/view/VinylListView.fxml");
         break;
       case "editVinyl":
-        root = loadEditVinylView("EditVinylView.fxml");
+        root = loadEditVinylView("/view/EditVinylView.fxml");
         break;
     }
     currentScene.setRoot(root);
@@ -43,8 +43,7 @@ public class ViewHandler {
     primaryStage.show();
   }
 
-  public void closeView()
-  {
+  public void closeView() {
     primaryStage.close();
   }
 
@@ -75,7 +74,7 @@ public class ViewHandler {
         loader.setLocation(getClass().getResource(fxml));
         root = loader.load();
         editVinylController = loader.getController();
-        editVinylController.init(viewModelFactory.getEditVinylViewModel());
+        editVinylController.init(this,viewModelFactory.getEditVinylViewModel(),root);
       }
       catch(Exception e) {
         e.printStackTrace();

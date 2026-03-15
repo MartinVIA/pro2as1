@@ -14,14 +14,8 @@ public class EditVinylViewModel {
   private StringProperty artist;
   private ObjectProperty<VinylState> vinylState;
 
-  public EditVinylViewModel(Vinyl vinyl) {
-    this.vinyl = vinyl;
-    title = new SimpleStringProperty(vinyl.getTitle());
-    year = new SimpleIntegerProperty(vinyl.getReleaseYear());
-    artist = new SimpleStringProperty(vinyl.getArtist());
-    vinylState = new SimpleObjectProperty<VinylState>(vinyl.getCurrentVinylState());
-  }
-  public EditVinylViewModel(){
+  public EditVinylViewModel(VinylModel model){
+    this.model = model;
   }
   public void setVinyl(Vinyl vinyl){
     this.vinyl = vinyl;

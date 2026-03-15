@@ -17,12 +17,13 @@ import java.io.IOException;
 public class MainVinylLibrary extends Application
 {
   public static void main(String[] args) {
-
+    launch(args);
   }
   @Override
   public void start(Stage primaryStage) throws IOException {
     VinylLibraryManager manager = new VinylLibraryManager();
     manager.addVinyl("Hamburger","Biggie Cheese", 2026);
+    manager.addVinyl("Buvany Special"," GMAN productions", 6767);
     manager.getVinyl(0).setCurrentVinylState(new BorrowedState());
     //Add observer to the first vinyl in the manager list of vinyls
     manager.getVinyl(0).setCurrentVinylState(new ReservedState());

@@ -13,6 +13,6 @@
                <TableColumn fx:id="lendingState" prefWidth="139.99996948242188" text="Lending State" />
            </columns>
        </TableView>
-      <Button fx:id="editButton" layoutX="282.0" layoutY="360.0" mnemonicParsing="false" text="Edit" />
+      <Button fx:id="editButton" layoutX="282.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleEdit" text="Edit" />
    </children>
 </AnchorPane>

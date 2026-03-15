@@ -16,17 +16,24 @@ public class EditVinylController {
   @FXML private Button reserveButton;
   @FXML private Button saveButton;
   private EditVinylViewModel viewModel;
+  private ViewHandler viewHandler;
   private Region root;
   private Stage stage;
 
-  public void init(EditVinylViewModel viewModel) {
+  public void init(ViewHandler viewHandler,EditVinylViewModel viewModel,Region root) {
     this.viewModel = viewModel;
+    this.root = root;
+    this.viewHandler = viewHandler;
     titleField.textProperty().bindBidirectional(viewModel.getTitleProperty());
     artistField.textProperty().bindBidirectional(viewModel.getArtistProperty());
     viewModel.getYearProperty().addListener((obs, oldVal, newVal) ->
         releaseYearField.setText(String.valueOf(newVal)));
     currentVinylStateLabel.textProperty().bind(
           Bindings.createStringBinding(() -> viewModel.getVinylStateProperty().get().toString(), viewModel.getVinylStateProperty()));
+  }
+  @FXML
+  public void initialize(){
+    //Leave it blank, it doesn't depend on any other injected data
   }
 
   public void handleAvailableButton(){
