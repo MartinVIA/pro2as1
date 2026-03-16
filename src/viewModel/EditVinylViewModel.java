@@ -3,9 +3,10 @@ package viewModel;
 import javafx.beans.property.*;
 import model.*;
 
-public class EditVinylViewModel {
-  // Platform.runLater() - potentially needed?
-  private Vinyl vinyl;
+import java.beans.PropertyChangeListener;
+
+public class EditVinylViewModel{
+  private int index;
   private final VinylModel model;
   private StringProperty title = new SimpleStringProperty();
   private StringProperty artist = new SimpleStringProperty();
@@ -16,13 +17,13 @@ public class EditVinylViewModel {
   public EditVinylViewModel(VinylModel model){
     this.model = model;
   }
-  public void setVinyl(Vinyl vinyl){
-    this.vinyl = vinyl;
-    title.set(vinyl.getTitle());
-    artist.set(vinyl.getArtist());
-    reserveName.set(vinyl.getReserveName());
-    year.set(vinyl.getReleaseYear());
-    vinylState.set(vinyl.getCurrentVinylState());
+  public void setVinylIndex(int index){
+    this.index = index;
+    title.set(model.getVinyl(index).getTitle());
+    artist.set(model.getVinyl(index).getArtist());
+    reserveName.set(model.getVinyl(index).getReserveName());
+    year.set(model.getVinyl(index).getReleaseYear());
+    vinylState.set(model.getVinyl(index).getCurrentVinylState());
   }
 
   public StringProperty getTitleProperty(){
@@ -40,25 +41,31 @@ public class EditVinylViewModel {
   public ObjectProperty<VinylState> getVinylStateProperty(){
     return vinylState;
   }
-
-  public Vinyl getSelectedVinyl(){
-    return vinyl;
+  public void setReserveName(String name){
+    reserveName.set(name);
+    model.getVinyl(index).setReserveName(name);
   }
-  public void setAvailableVinylState( ) {
+  private void setReserveName( ){
+    reserveName.set("");
+    model.getVinyl(index).setReserveName("");
+  }
+  public void setAvailableVinylState() {
     VinylState available = new AvailableState();
     vinylState.set(available);
-    vinyl.setCurrentVinylState(available);
+    model.getVinyl(index).setCurrentVinylState(available);
+    //Making sure the name is an empty string when making the vinly available
+    setReserveName();
   }
 
   public void setReservedVinylState() {
     VinylState reserved = new ReservedState();
     vinylState.set(reserved);
-    vinyl.setCurrentVinylState(reserved);
+    model.getVinyl(index).setCurrentVinylState(reserved);
   }
 
   public void setBorrowedVinylState() {
     VinylState borrowed = new BorrowedState();
     vinylState.set(borrowed);
-    vinyl.setCurrentVinylState(borrowed);
+    model.getVinyl(index).setCurrentVinylState(borrowed);
   }
 }

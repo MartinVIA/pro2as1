@@ -45,7 +45,7 @@ public class ViewHandler {
   public void closeView() {
     primaryStage.close();
   }
-String name = "Nandor";
+
   private Region loadVinylListView(String fxml) {
     Region root;
     if (vinylListController == null) {

@@ -28,19 +28,15 @@ public class EditVinylController {
     this.viewHandler = viewHandler;
     titleField.textProperty().bindBidirectional(viewModel.getTitleProperty());
     artistField.textProperty().bindBidirectional(viewModel.getArtistProperty());
-    //TODO When opening the editVinyl view for the first time, the year doesn't show
     viewModel.getYearProperty().addListener((obs, oldVal, newVal) ->
         releaseYearField.setText(String.valueOf(newVal)));
-    //TODO ReserveName does not save when pressing the save button
     reserveNameField.textProperty().bindBidirectional(viewModel.getReservedNameProperty());
     currentVinylStateField.setEditable(false);
-    //TODO Lending State does not save when pressing the save button, only in the edit view, not in Vinyl List view
-    currentVinylStateField.textProperty().bind(
-          Bindings.createStringBinding(() -> viewModel.getVinylStateProperty().get().toString(), viewModel.getVinylStateProperty()));
+    currentVinylStateField.textProperty().bind(Bindings.createStringBinding(() -> viewModel.getVinylStateProperty().get().toString(), viewModel.getVinylStateProperty()));
   }
   @FXML
   public void initialize(){
-    //Leave it blank, it doesn't depend on any other injected data
+    //Leave it blank, it doesn't need to do anything
   }
 
   public void handleAvailableButton(){
@@ -58,8 +54,11 @@ public class EditVinylController {
     viewHandler.openView("vinylList");
   }
   public void handleSave(){
+
+    viewModel.setReserveName(reserveNameField.getText());
     viewHandler.openView("vinylList");
   }
+
   //resets the window by clearing all the fields
   public void reset() {
 

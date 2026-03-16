@@ -11,8 +11,8 @@
                <TableColumn fx:id="title" prefWidth="165.59998321533203" text="Title of Vinyl" />
                <TableColumn fx:id="year" minWidth="0.0" prefWidth="67.0" text="Year" />
                <TableColumn fx:id="artist" minWidth="8.199981689453125" prefWidth="125.79998779296875" text="Artist" />
-               <TableColumn fx:id="lendingState" prefWidth="139.99996948242188" text="Lending State" />
-            <TableColumn fx:id="reserverName" prefWidth="132.20001220703125" text="Reserver Name" />
+               <TableColumn fx:id="currentVinylState" prefWidth="139.99996948242188" text="Current Vinyl State" />
+            <TableColumn fx:id="reserveName" prefWidth="132.20001220703125" text="Reserve Name" />
            </columns>
        </TableView>
       <Button fx:id="editButton" layoutX="335.0" layoutY="414.0" mnemonicParsing="false" onAction="#handleEdit" text="Edit">

@@ -4,13 +4,8 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
-import javafx.stage.Stage;
 import model.Vinyl;
 import model.VinylState;
 import viewModel.VinylListViewModel;
@@ -18,15 +13,13 @@ import viewModel.VinylListViewModel;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 
-import java.io.IOException;
-
 public class VinylListController {
   @FXML private TableView<Vinyl> vinylTable;
   @FXML private TableColumn<Vinyl, String> title;
   @FXML private TableColumn<Vinyl, String> artist;
   @FXML private TableColumn<Vinyl, Integer> year;
-  @FXML private TableColumn<Vinyl, VinylState> lendingState;
-  @FXML private TableColumn<Vinyl, String> reserverName;
+  @FXML private TableColumn<Vinyl, VinylState> currentVinylState;
+  @FXML private TableColumn<Vinyl, String> reserveName;
   @FXML private Button editButton;
   private ViewHandler viewHandler;
   private VinylListViewModel model;
@@ -39,9 +32,9 @@ public class VinylListController {
   title.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getTitle()));
   artist.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getArtist()));
   year.setCellValueFactory(cell -> new SimpleIntegerProperty(cell.getValue().getReleaseYear()).asObject());
-  lendingState.setCellValueFactory(cell -> new SimpleObjectProperty<>(cell.getValue().getCurrentVinylState()));
-  reserverName.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getReserveName()));
-  vinylTable.getItems().addAll(model.getVinylList());
+  currentVinylState.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getCurrentVinylState()));
+  reserveName.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getReserveName()));
+  vinylTable.setItems(model.getVinylList());
   }
   @FXML
   public void initialize(){
@@ -50,16 +43,15 @@ public class VinylListController {
 
   //refreshes the table view to show the latest information about the vinyls
   public void refresh() {
-
+model.reload();
   }
 
   public void handleEdit(){
     //should show an error if a vinyl is not selected
     int selectedIndex = vinylTable.getSelectionModel().getSelectedIndex();
     if(selectedIndex  >= 0) {
-    model.setIndex(selectedIndex);
-    //ViewHandler --> ViewModelFactory --> EditVinylViewModel--> SetVinyl(VinylListViewModel.getSelectedVinyl)
-    viewHandler.getViewModelFactory().getEditVinylViewModel().setVinyl(model.getSelectedVinyl());
+    //ViewHandler --> ViewModelFactory --> EditVinylViewModel--> SetVinylIndex(VinylListViewModel.getSelectedVinyl)
+    viewHandler.getViewModelFactory().getEditVinylViewModel().setVinylIndex(selectedIndex);
     viewHandler.openView("editVinyl");
     }
   }

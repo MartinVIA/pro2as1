@@ -5,18 +5,18 @@ import java.beans.PropertyChangeSupport;
 public class Vinyl {
     private String title;
     private String artist;
-    private VinylState currentVinylState;
-    private String reserveName;
-    private static final String currentVinylStateProperty = "VinylState";
     private int releaseYear;
+    private String reserveName;
+    private VinylState currentVinylState;
+    private static final String currentVinylStateProperty = "VinylState";
     private final PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
     public Vinyl(String title, String artist, int releaseYear){
       this.title = title;
-      currentVinylState = new AvailableState();
       this.artist = artist;
       this.releaseYear = releaseYear;
       reserveName = "";
+      currentVinylState = new AvailableState();
     }
     public void setTitle(String title){
         this.title = title;

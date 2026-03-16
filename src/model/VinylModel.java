@@ -1,10 +1,12 @@
 package model;
 
+import javafx.collections.ObservableList;
+
 import java.util.ArrayList;
 
 public interface VinylModel {
   void addVinyl(String title,String artist,int releaseYear);
   Vinyl getVinyl(int index);
-  ArrayList<Vinyl> getVinylList();
+  ObservableList<Vinyl> getVinylList();
   int getVinylCount();
 }
