@@ -26,6 +26,7 @@ public class VinylListController {
   @FXML private TableColumn<Vinyl, String> artist;
   @FXML private TableColumn<Vinyl, Integer> year;
   @FXML private TableColumn<Vinyl, VinylState> lendingState;
+  @FXML private TableColumn<Vinyl, String> reserverName;
   @FXML private Button editButton;
   private ViewHandler viewHandler;
   private VinylListViewModel model;
@@ -39,7 +40,7 @@ public class VinylListController {
   artist.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getArtist()));
   year.setCellValueFactory(cell -> new SimpleIntegerProperty(cell.getValue().getReleaseYear()).asObject());
   lendingState.setCellValueFactory(cell -> new SimpleObjectProperty<>(cell.getValue().getCurrentVinylState()));
-
+  reserverName.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getReserveName()));
   vinylTable.getItems().addAll(model.getVinylList());
   }
   @FXML
@@ -53,6 +54,7 @@ public class VinylListController {
   }
 
   public void handleEdit(){
+    //should show an error if a vinyl is not selected
     int selectedIndex = vinylTable.getSelectionModel().getSelectedIndex();
     if(selectedIndex  >= 0) {
     model.setIndex(selectedIndex);

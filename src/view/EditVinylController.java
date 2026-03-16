@@ -28,6 +28,7 @@ public class EditVinylController {
     this.viewHandler = viewHandler;
     titleField.textProperty().bindBidirectional(viewModel.getTitleProperty());
     artistField.textProperty().bindBidirectional(viewModel.getArtistProperty());
+    //TODO When opening the editVinyl view for the first time, the year doesn't show
     viewModel.getYearProperty().addListener((obs, oldVal, newVal) ->
         releaseYearField.setText(String.valueOf(newVal)));
     //TODO ReserveName does not save when pressing the save button

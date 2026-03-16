@@ -2,17 +2,26 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.VinylListController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="487.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.VinylListController">
    <children>
-       <TableView fx:id="vinylTable" layoutX="50.0" layoutY="25.0" prefHeight="325.0" prefWidth="520.0">
+       <TableView fx:id="vinylTable" layoutX="39.0" layoutY="48.0" prefHeight="326.0" prefWidth="635.0">
            <columns>
                <TableColumn fx:id="title" prefWidth="165.59998321533203" text="Title of Vinyl" />
                <TableColumn fx:id="year" minWidth="0.0" prefWidth="67.0" text="Year" />
                <TableColumn fx:id="artist" minWidth="8.199981689453125" prefWidth="125.79998779296875" text="Artist" />
                <TableColumn fx:id="lendingState" prefWidth="139.99996948242188" text="Lending State" />
+            <TableColumn fx:id="reserverName" prefWidth="132.20001220703125" text="Reserver Name" />
            </columns>
        </TableView>
-      <Button fx:id="editButton" layoutX="282.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleEdit" text="Edit" />
+      <Button fx:id="editButton" layoutX="335.0" layoutY="414.0" mnemonicParsing="false" onAction="#handleEdit" text="Edit">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Label layoutX="226.0" layoutY="14.0" text="List of Vinyls in the System">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font></Label>
    </children>
 </AnchorPane>

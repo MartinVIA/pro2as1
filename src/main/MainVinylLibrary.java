@@ -27,8 +27,11 @@ public class MainVinylLibrary extends Application
     manager.getVinyl(0).setCurrentVinylState(new BorrowedState());
     //Add observer to the first vinyl in the manager list of vinyls
     manager.getVinyl(0).setCurrentVinylState(new ReservedState());
+    manager.getVinyl(0).setReserveName("Gyattman");
     //"State has been changed from oldState.getName to newState.getName"
     manager.getVinyl(0).setCurrentVinylState(new AvailableState());
+    manager.getVinyl(1).setCurrentVinylState(new ReservedState());
+    manager.getVinyl(1).setReserveName("Big A");
     ViewHandler viewHandler = new ViewHandler(new ViewModelFactory(manager));
     viewHandler.start(new Stage());
   }
