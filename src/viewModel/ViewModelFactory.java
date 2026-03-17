@@ -12,6 +12,11 @@ public class ViewModelFactory {
     vinylListViewModel = new VinylListViewModel(model);
     editVinylViewModel = new EditVinylViewModel(model);
   }
+  public ViewModelFactory(){
+    VinylLibraryManager manager = new VinylLibraryManager();
+    vinylListViewModel = new VinylListViewModel(manager);
+    editVinylViewModel = new EditVinylViewModel(manager);
+  }
 
   public VinylListViewModel getVinylListViewModel()
   { return vinylListViewModel;}

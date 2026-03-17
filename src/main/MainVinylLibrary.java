@@ -16,8 +16,7 @@ public class MainVinylLibrary extends Application {
   }
   @Override
   public void start(Stage primaryStage) throws IOException {
-    VinylLibraryManager manager = new VinylLibraryManager();
-    ViewHandler viewHandler = new ViewHandler(new ViewModelFactory(manager));
+    ViewHandler viewHandler = new ViewHandler();
     viewHandler.start(new Stage());
   }
 }

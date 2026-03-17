@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
+import javafx.util.converter.NumberStringConverter;
 import viewModel.EditVinylViewModel;
 
 public class EditVinylController {
@@ -29,7 +30,8 @@ public class EditVinylController {
     titleField.textProperty().bindBidirectional(viewModel.getTitleProperty());
     artistField.textProperty().bindBidirectional(viewModel.getArtistProperty());
     viewModel.getYearProperty().addListener((obs, oldVal, newVal) ->
-        releaseYearField.setText(String.valueOf(newVal)));
+        releaseYearField.setText(String.valueOf(newVal.intValue())));
+    releaseYearField.setText(String.valueOf(viewModel.getYearProperty().get()));
     reserveNameField.textProperty().bindBidirectional(viewModel.getReservedNameProperty());
     currentVinylStateField.setEditable(false);
     currentVinylStateField.textProperty().bind(Bindings.createStringBinding(() -> viewModel.getVinylStateProperty().get().toString(), viewModel.getVinylStateProperty()));

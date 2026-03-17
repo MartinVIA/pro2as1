@@ -43,11 +43,12 @@ public class VinylListController {
 
   //refreshes the table view to show the latest information about the vinyls
   public void refresh() {
-model.reload();
+    model.reload();
   }
 
   public void handleEdit(){
     //should show an error if a vinyl is not selected
+    //No -HNande
     int selectedIndex = vinylTable.getSelectionModel().getSelectedIndex();
     if(selectedIndex  >= 0) {
     //ViewHandler --> ViewModelFactory --> EditVinylViewModel--> SetVinylIndex(VinylListViewModel.getSelectedVinyl)

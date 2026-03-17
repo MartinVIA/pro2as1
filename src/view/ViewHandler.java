@@ -10,12 +10,16 @@ public class ViewHandler {
 
   private Stage primaryStage;
   private Scene currentScene;
-  private ViewModelFactory viewModelFactory;
+  private final ViewModelFactory viewModelFactory;
   private VinylListController vinylListController;
   private EditVinylController editVinylController;
 
   public ViewHandler(ViewModelFactory viewModelFactory) {
     this.viewModelFactory = viewModelFactory;
+    currentScene = new Scene(new Region());
+  }
+  public ViewHandler(){
+    this.viewModelFactory = new ViewModelFactory();
     currentScene = new Scene(new Region());
   }
 

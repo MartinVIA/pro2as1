@@ -7,12 +7,12 @@ import java.beans.PropertyChangeListener;
 
 public class EditVinylViewModel{
   private int index;
-  private final VinylModel model;
-  private StringProperty title = new SimpleStringProperty();
-  private StringProperty artist = new SimpleStringProperty();
-  private StringProperty reserveName = new SimpleStringProperty();
-  private IntegerProperty year = new SimpleIntegerProperty();
-  private ObjectProperty<VinylState> vinylState = new SimpleObjectProperty<>();
+  private  VinylModel model;
+  private  StringProperty title = new SimpleStringProperty();
+  private  StringProperty artist = new SimpleStringProperty();
+  private  StringProperty reserveName = new SimpleStringProperty();
+  private  IntegerProperty year = new SimpleIntegerProperty();
+  private  ObjectProperty<VinylState> vinylState = new SimpleObjectProperty<>();
 
   public EditVinylViewModel(VinylModel model){
     this.model = model;
@@ -58,6 +58,13 @@ public class EditVinylViewModel{
   }
 
   public void setReservedVinylState() {
+    VinylState borrowed = new BorrowedState();
+    if(model.getVinyl(index).getCurrentVinylState().getClass() == borrowed.getClass()){
+      VinylState temp = new BorrowedReservedState();
+      vinylState.set(temp);
+      model.getVinyl(index).setCurrentVinylState(temp);
+      return;
+    }
     VinylState reserved = new ReservedState();
     vinylState.set(reserved);
     model.getVinyl(index).setCurrentVinylState(reserved);
