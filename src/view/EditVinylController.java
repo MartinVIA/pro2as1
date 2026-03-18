@@ -53,10 +53,10 @@ public class EditVinylController {
     viewModel.setBorrowedVinylState();
   }
   public void handleCancel(){
+    viewModel.setToOldVinylState();
     viewHandler.openView("vinylList");
   }
   public void handleSave(){
-
     viewModel.setReserveName(reserveNameField.getText());
     viewHandler.openView("vinylList");
   }

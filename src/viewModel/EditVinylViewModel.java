@@ -13,6 +13,7 @@ public class EditVinylViewModel{
   private  StringProperty reserveName = new SimpleStringProperty();
   private  IntegerProperty year = new SimpleIntegerProperty();
   private  ObjectProperty<VinylState> vinylState = new SimpleObjectProperty<>();
+  private VinylState oldVinylState;
 
   public EditVinylViewModel(VinylModel model){
     this.model = model;
@@ -24,6 +25,7 @@ public class EditVinylViewModel{
     reserveName.set(model.getVinyl(index).getReserveName());
     year.set(model.getVinyl(index).getReleaseYear());
     vinylState.set(model.getVinyl(index).getCurrentVinylState());
+    oldVinylState = model.getVinyl(index).getCurrentVinylState();
   }
 
   public StringProperty getTitleProperty(){
@@ -75,4 +77,8 @@ public class EditVinylViewModel{
     vinylState.set(borrowed);
     model.getVinyl(index).setCurrentVinylState(borrowed);
   }
+  public void setToOldVinylState(){
+    model.getVinyl(index).setCurrentVinylState(oldVinylState);
+  }
+
 }
