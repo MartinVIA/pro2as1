@@ -18,6 +18,7 @@ public class EditVinylController {
   @FXML private Button reserveButton;
   @FXML private Button saveButton;
   @FXML private Button cancelButton;
+  @FXML private Button removeButton;
   private EditVinylViewModel viewModel;
   private ViewHandler viewHandler;
   private Region root;

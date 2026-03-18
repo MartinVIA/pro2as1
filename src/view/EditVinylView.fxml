@@ -30,13 +30,13 @@
       <Button fx:id="availableButton" layoutX="175.0" layoutY="288.0" mnemonicParsing="false" onAction="#handleAvailableButton" text="Available" />
       <Button fx:id="reserveButton" layoutX="273.0" layoutY="288.0" mnemonicParsing="false" onAction="#handleReservedButton" text="Reserved" />
       <Button fx:id="borrowButton" layoutX="379.0" layoutY="288.0" mnemonicParsing="false" onAction="#handleBorrowedButton" text="Borrowed" />
-      <Button fx:id="saveButton" layoutX="327.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleSave" text="Save" />
+      <Button fx:id="saveButton" layoutX="295.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleSave" text="Save" />
       <Label layoutX="35.0" layoutY="238.0" text="Current State:">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Button fx:id="cancelButton" layoutX="224.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleCancel" text="Cancel" />
+      <Button fx:id="cancelButton" layoutX="187.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleCancel" text="Cancel" />
       <TextField fx:id="currentVinylStateField" editable="false" layoutX="176.0" layoutY="238.0" prefHeight="26.0" prefWidth="304.0" />
       <TextField fx:id="reserveNameField" layoutX="175.0" layoutY="200.0" prefHeight="26.0" prefWidth="304.0" />
       <Label layoutX="32.0" layoutY="200.0" text="Reserve Name:">
@@ -49,5 +49,6 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
+      <Button fx:id="removeButton" layoutX="387.0" layoutY="358.0" mnemonicParsing="false" text="Remove" />
    </children>
 </AnchorPane>
