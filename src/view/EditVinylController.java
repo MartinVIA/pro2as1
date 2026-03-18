@@ -53,6 +53,9 @@ public class EditVinylController {
   public void handleBorrowedButton(){
     viewModel.setBorrowedVinylState();
   }
+  public void handleRemovedButton(){
+    viewModel.setRemovedVinylState();
+  }
   public void handleCancel(){
     viewModel.setToOldVinylState();
     viewHandler.openView("vinylList");

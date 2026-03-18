@@ -49,6 +49,6 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Button fx:id="removeButton" layoutX="387.0" layoutY="358.0" mnemonicParsing="false" text="Remove" />
+      <Button fx:id="removeButton" layoutX="387.0" layoutY="358.0" mnemonicParsing="false" onAction="#handleRemovedButton" text="Remove" />
    </children>
 </AnchorPane>

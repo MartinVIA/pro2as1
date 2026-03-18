@@ -81,4 +81,9 @@ public class EditVinylViewModel{
     model.getVinyl(index).setCurrentVinylState(oldVinylState);
   }
 
+  public void setRemovedVinylState() {
+    VinylState removed = new RemovedState();
+    vinylState.set(removed);
+    model.getVinyl(index).setCurrentVinylState(removed);
+  }
 }
