@@ -6,6 +6,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Region;
+import model.RemovedState;
 import model.Vinyl;
 import model.VinylState;
 import viewModel.VinylListViewModel;
@@ -51,9 +52,13 @@ public class VinylListController {
     //No -HNande
     int selectedIndex = vinylTable.getSelectionModel().getSelectedIndex();
     if(selectedIndex  >= 0) {
-    //ViewHandler --> ViewModelFactory --> EditVinylViewModel--> SetVinylIndex(VinylListViewModel.getSelectedVinyl)
-    viewHandler.getViewModelFactory().getEditVinylViewModel().setVinylIndex(selectedIndex);
-    viewHandler.openView("editVinyl");
+      if(model.getVinylList().get(selectedIndex).getCurrentVinylState().getClass() == RemovedState.class){
+        return;
+      }
+      //ViewHandler --> ViewModelFactory --> EditVinylViewModel--> SetVinylIndex(VinylListViewModel.getSelectedVinyl)
+      viewHandler.getViewModelFactory().getEditVinylViewModel().setVinylIndex(selectedIndex);
+      viewHandler.openView("editVinyl");
+
     }
   }
 
