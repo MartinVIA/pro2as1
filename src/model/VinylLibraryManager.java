@@ -2,7 +2,6 @@ package model;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import utils.VinylObserver;
-import java.util.ArrayList;
 
 public class VinylLibraryManager implements VinylModel {
   private ObservableList<Vinyl> vinylList;
@@ -33,5 +32,12 @@ public class VinylLibraryManager implements VinylModel {
  public ObservableList<Vinyl> getVinylList(){
     return vinylList;
   }
+
+  Thread bobThread=new Thread(new Simulation("Bob",1000));
+  // bobThread.start();
+
+    public void runBobThread() {
+      bobThread.start();  
+    }
 
 }
