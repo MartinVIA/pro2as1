@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
-import javafx.util.converter.NumberStringConverter;
 import viewModel.EditVinylViewModel;
 
 public class EditVinylController {
