@@ -6,10 +6,12 @@ import viewModel.EditVinylViewModel;
 
 class Simulation implements Runnable{
 
-    int delay;
-    String name;
+    private int delay;
+    private String name;
+    private VinylModel model;
 
-    public Simulation(String name,int delay) {
+    public Simulation(VinylModel model,String name,int delay) {
+      this.model = model;
         this.delay=delay;
         this.name=name;
     }
@@ -23,7 +25,7 @@ class Simulation implements Runnable{
             // Vinyl bobVinyl=VinylLibraryManager.getVinyl(1);
             //trying to construct a vinyl inside of the thread to be able to edit it. getVinyl should be refactored.
             // VinylLibraryManager.getVinyl(1).setCurrentVinylState(new ReservedState());
-            VinylLibraryManager.getVinyl(1).setReserveName(name);
+            model.getVinyl(2).setReserveName(name);
 
         } catch (InterruptedException e) {
         System.out.println("interruption error");

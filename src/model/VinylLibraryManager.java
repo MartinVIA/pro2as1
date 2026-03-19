@@ -5,6 +5,8 @@ import utils.VinylObserver;
 
 public class VinylLibraryManager implements VinylModel {
   private ObservableList<Vinyl> vinylList;
+  private Thread bobThread=new Thread(new Simulation(this,"Bob",1000));
+  private Thread bethThread=new Thread(new Simulation(this,"Bob",1000));
   public VinylLibraryManager(){
     vinylList = FXCollections.observableArrayList();
     addVinyl("Hamburger","Biggie Cheese", 2026);
@@ -23,7 +25,7 @@ public class VinylLibraryManager implements VinylModel {
     vinyl.addPropertyChangeListener(new VinylObserver("vinylObserver"));
     vinylList.add(vinyl);
   }
-  public Vinyl getVinyl(int index) {
+  public synchronized Vinyl getVinyl(int index) {
     return vinylList.get(index);
   }
   public int getVinylCount(){
@@ -33,7 +35,7 @@ public class VinylLibraryManager implements VinylModel {
     return vinylList;
   }
 
-  Thread bobThread=new Thread(new Simulation("Bob",1000));
+
   // bobThread.start();
 
     public void runBobThread() {
