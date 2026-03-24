@@ -84,7 +84,5 @@ public class EditVinylViewModel{
     vinylState.set(removed);
     model.getVinyl(index).setCurrentVinylState(removed);
   }
-  public VinylModel getModel(){
-    return model;
-  }
+
 }
