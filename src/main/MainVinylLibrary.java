@@ -14,6 +14,7 @@ public class MainVinylLibrary extends Application {
   public void start(Stage primaryStage) throws IOException {
     ViewHandler viewHandler = new ViewHandler();
     viewHandler.start(new Stage());
+    viewHandler.runBothThreads();
   }
 }
 
