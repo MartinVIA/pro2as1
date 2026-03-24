@@ -1,13 +1,18 @@
-package model;
+package viewModel;
+
+import model.ReservedState;
+import model.VinylModel;
 
 class Simulation implements Runnable{
 
     private int delay;
     private String name;
     private VinylModel model;
+    private VinylListViewModel view;
     private int vinylIndex;
 
-    public Simulation(VinylModel model,String name,int delay,int vinylIndex) {
+    public Simulation(VinylListViewModel view,VinylModel model,String name,int delay,int vinylIndex) {
+        this.view=view;
         this.model=model;
         this.delay=delay;
         this.name=name;
@@ -27,8 +32,7 @@ class Simulation implements Runnable{
             model.getVinyl(vinylIndex).setReserveName(name);
             
             Thread.sleep(delay);
-            System.out.println("not refreshing..");
-            // model.getVinylList().refresh();
+            view.reload();
 
             Thread.sleep(delay);
             System.out.println("thread should be finished..");

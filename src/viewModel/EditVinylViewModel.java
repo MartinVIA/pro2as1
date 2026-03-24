@@ -3,8 +3,6 @@ package viewModel;
 import javafx.beans.property.*;
 import model.*;
 
-import java.beans.PropertyChangeListener;
-
 public class EditVinylViewModel{
   private int index;
   private  VinylModel model;
@@ -85,5 +83,8 @@ public class EditVinylViewModel{
     VinylState removed = new RemovedState();
     vinylState.set(removed);
     model.getVinyl(index).setCurrentVinylState(removed);
+  }
+  public VinylModel getModel(){
+    return model;
   }
 }

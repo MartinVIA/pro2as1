@@ -6,7 +6,7 @@ import model.Vinyl;
 import model.VinylModel;
 
 public class VinylListViewModel {
-  private final VinylModel model;
+  private VinylModel model = null;
   private ObservableList<Vinyl> vinylList;
 
   public VinylListViewModel( VinylModel model ) {
@@ -21,6 +21,10 @@ public class VinylListViewModel {
   public void reload(){
     vinylList.clear();
     vinylList.addAll(model.getVinylList());
+  }
+  private Thread bobThread=new Thread(new Simulation(this,model,"Bob",1000,1));
+  public void runBobThread() {
+    bobThread.start();
   }
 
 }

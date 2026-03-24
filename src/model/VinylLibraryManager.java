@@ -6,11 +6,6 @@ import utils.VinylObserver;
 public class VinylLibraryManager implements VinylModel {
   private ObservableList<Vinyl> vinylList;
   
-  private Thread bobThread=new Thread(new Simulation(this,"Bob",1000,1));
-  public void runBobThread() {
-    bobThread.start();
-    // refresh method
-  }
 
   public VinylLibraryManager(){
     vinylList = FXCollections.observableArrayList();
