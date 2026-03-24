@@ -3,11 +3,13 @@ package viewModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Vinyl;
+import model.VinylLibraryManager;
 import model.VinylModel;
 
 public class VinylListViewModel {
   private VinylModel model;
   private ObservableList<Vinyl> vinylList;
+  private VinylLibraryManager libraryManager;
 
   public VinylListViewModel( VinylModel model ) {
     this.model = model;

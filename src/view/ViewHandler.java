@@ -88,12 +88,15 @@ public class ViewHandler {
     return editVinylController.getRoot();
   }
 
+
   public ViewModelFactory getViewModelFactory(){
     return viewModelFactory;
   }
   
     private Thread bobThread=new Thread(new Simulation(this,"Bob",1000,1));
-  public void runBobThread() {
-    bobThread.start();
-  }
+    private Thread wendyThread=new Thread(new Simulation(this,"Wendy",1100,2));
+    public void runBothThreads() {
+      bobThread.start();
+      wendyThread.start();
+    }
 }

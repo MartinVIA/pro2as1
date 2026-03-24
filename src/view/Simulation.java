@@ -1,25 +1,24 @@
 package view;
 
 import model.ReservedState;
-import model.VinylModel;
-import viewModel.VinylListViewModel;
+import model.Vinyl;
 
 class Simulation implements Runnable{
 
     private int delay;
     private String name;
-    private VinylModel model;
-    private VinylListViewModel view;
+    private ViewHandler view;
     private int vinylIndex;
 
-    public Simulation(VinylListViewModel view,VinylModel model,String name,int delay,int vinylIndex) {
+    public Simulation(ViewHandler view,String name,int delay,int vinylIndex) {
         this.view=view;
-        this.model=model;
         this.delay=delay;
         this.name=name;
         this.vinylIndex=vinylIndex;
     }
-    
+    private Vinyl findVinyl(int index){
+        return view.getViewModelFactory().getVinylListViewModel().getVinylList().get(index);
+    }
     
     
     @Override
@@ -29,11 +28,14 @@ class Simulation implements Runnable{
             Thread.sleep(delay);
             System.out.println(name+". . .");
             Thread.sleep(delay);
-            model.getVinyl(vinylIndex).setCurrentVinylState(new ReservedState());
-            model.getVinyl(vinylIndex).setReserveName(name);
+
+            // view.getViewModelFactory().getVinylListViewModel().getVinylList().get(vinylIndex).setCurrentVinylState(new ReservedState());
+            // view.getViewModelFactory().getVinylListViewModel().getVinylList().get(vinylIndex).setReserveName(name);  
+            findVinyl(vinylIndex).setCurrentVinylState(new ReservedState());
+            findVinyl(vinylIndex).setReserveName(name);
             
             Thread.sleep(delay);
-            view.reload();
+            view.getViewModelFactory().getVinylListViewModel().reload();
 
             Thread.sleep(delay);
             System.out.println("thread should be finished..");
