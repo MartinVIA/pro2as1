@@ -1,7 +1,8 @@
-package viewModel;
+package view;
 
 import model.ReservedState;
 import model.VinylModel;
+import viewModel.VinylListViewModel;
 
 class Simulation implements Runnable{
 

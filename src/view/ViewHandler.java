@@ -91,4 +91,9 @@ public class ViewHandler {
   public ViewModelFactory getViewModelFactory(){
     return viewModelFactory;
   }
+  
+    private Thread bobThread=new Thread(new Simulation(this,"Bob",1000,1));
+  public void runBobThread() {
+    bobThread.start();
+  }
 }

@@ -22,9 +22,5 @@ public class VinylListViewModel {
     vinylList.clear();
     vinylList.addAll(model.getVinylList());
   }
-  private Thread bobThread=new Thread(new Simulation(this,model,"Bob",1000,1));
-  public void runBobThread() {
-    bobThread.start();
-  }
 
 }
