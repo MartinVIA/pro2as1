@@ -6,7 +6,7 @@ import model.Vinyl;
 import model.VinylModel;
 
 public class VinylListViewModel {
-  private VinylModel model = null;
+  private VinylModel model;
   private ObservableList<Vinyl> vinylList;
 
   public VinylListViewModel( VinylModel model ) {
