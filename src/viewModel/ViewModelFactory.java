@@ -16,6 +16,7 @@ public class ViewModelFactory {
     VinylLibraryManager manager = new VinylLibraryManager();
     vinylListViewModel = new VinylListViewModel(manager);
     editVinylViewModel = new EditVinylViewModel(manager);
+    vinylListViewModel.addLibrary(manager);
     vinylListViewModel.runBobThread();
   }
 
