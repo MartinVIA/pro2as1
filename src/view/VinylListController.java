@@ -23,8 +23,8 @@ public class VinylListController {
   @FXML private TableColumn<Vinyl, String> reserveName;
   @FXML private Button editButton;
   private ViewHandler viewHandler;
-  private VinylListViewModel model;
   private Region root;
+  private VinylListViewModel model;
 
   public void init(ViewHandler viewHandler, VinylListViewModel vinylListViewModel, Region root) {
   this.root = root;
