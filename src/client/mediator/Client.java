@@ -44,4 +44,9 @@ public class Client implements ServerModel {
   @Override public String convert() {
     return "";
   }
+
+  public Socket getSocket()
+  {
+    return socket;
+  }
 }

@@ -1,7 +1,9 @@
-package client.view;
+package client.utils;
 
 import client.model.ReservedState;
 import client.model.Vinyl;
+import client.view.ViewHandler;
+import client.viewModel.VinylViewModel;
 
 class Simulation implements Runnable{
 

@@ -1,5 +1,6 @@
 package client.view;
 
+//import client.utils.Simulation;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Region;
@@ -93,10 +94,12 @@ public class ViewHandler {
     return viewModelFactory;
   }
   
-    private Thread bobThread=new Thread(new Simulation(this,"Bob",1000,1));
-    private Thread wendyThread=new Thread(new Simulation(this,"Wendy",1100,2));
-    public void runBothThreads() {
-      bobThread.start();
-      wendyThread.start();
-    }
+//    private Thread bobThread=new Thread(new Simulation(this,"Bob",1000,1));
+//    private Thread wendyThread=new Thread(new Simulation(this,"Wendy",1100,2));
+//
+//    public void runBothThreads() {
+//      bobThread.start();
+//      wendyThread.start();
+//    }
+
 }
