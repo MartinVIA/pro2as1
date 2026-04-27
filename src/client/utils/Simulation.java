@@ -18,7 +18,7 @@ class Simulation implements Runnable{
         this.name=name;
         this.vinylIndex=vinylIndex;
     }
-    private Vinyl findVinyl(int index){
+    private VinylViewModel findVinyl(int index){
         return view.getViewModelFactory().getVinylListViewModel().getVinylList().get(index);
     }
     
@@ -33,7 +33,7 @@ class Simulation implements Runnable{
 
             // view.getViewModelFactory().getVinylListViewModel().getVinylList().get(vinylIndex).setCurrentVinylState(new ReservedState());
             // view.getViewModelFactory().getVinylListViewModel().getVinylList().get(vinylIndex).setReserveName(name);  
-            findVinyl(vinylIndex).setCurrentVinylState(new ReservedState());
+            findVinyl(vinylIndex).setCurrentVinylState("ReservedState");
             findVinyl(vinylIndex).setReserveName(name);
             
             Thread.sleep(delay);

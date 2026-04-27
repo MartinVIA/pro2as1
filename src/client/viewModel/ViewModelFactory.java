@@ -9,12 +9,12 @@ public class ViewModelFactory {
   private final EditVinylViewModel editVinylViewModel;
 
   public ViewModelFactory(VinylModel model) {
-    vinylListViewModel = new VinylListViewModel(model);
+    vinylListViewModel = new VinylListViewModel(model, this);
     editVinylViewModel = new EditVinylViewModel(model);
   }
   public ViewModelFactory(){
     ModelManager manager = new ModelManager();
-    vinylListViewModel = new VinylListViewModel(manager);
+    vinylListViewModel = new VinylListViewModel(manager, this);
     editVinylViewModel = new EditVinylViewModel(manager);
   }
 
