@@ -14,7 +14,7 @@ public class VinylServer {
     System.out.println("Waiting for connection on " + serverSocket.getLocalPort());
     Socket socket;
     while((socket = serverSocket.accept()) != null) { // Wait for a connection
-      ClientHandler handler = new ClientHandler(socket, gson,udpBroadcaster,model);
+      ClientHandler handler = new ClientHandler(socket);
       Thread thread = new Thread(handler);
       thread.setDaemon(true);
       thread.start();

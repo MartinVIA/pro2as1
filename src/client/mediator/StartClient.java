@@ -19,12 +19,6 @@ public class StartClient extends Application {
     Socket clientSocket = new Socket("localhost", PORT);
     BufferedReader input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
     PrintWriter output = new PrintWriter(clientSocket.getOutputStream(),true);
-    System.out.println("Listening to client console");
-    String response = scanner.nextLine();
-    System.out.println("Client: "+ response);
-    output.println(response);
-    String reply = input.readLine();
-    System.out.println("Server ["+ reply+"]");
     clientSocket.close();
     scanner.close();
     launch(args);

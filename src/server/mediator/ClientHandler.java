@@ -15,14 +15,11 @@ public class ClientHandler implements Runnable
   private final Gson gson;
   private final BufferedReader input;
   private final PrintWriter output;
-  private final UDPBroadcaster broadcaster;
   private Model model;
 
-    public ClientHandler(Socket socket, Gson gson, UDPBroadcaster broadcaster,Model model) throws IOException {
+    public ClientHandler(Socket socket) throws IOException {
     this.socket = socket;
-    this.gson = gson;
-    this.broadcaster = broadcaster;
-    this.model = model;
+    gson = new Gson();
     OutputStream outputStream = socket.getOutputStream();
     this.output = new PrintWriter(outputStream,true, StandardCharsets.UTF_8);
     InputStream inputStream = socket.getInputStream();
@@ -30,22 +27,18 @@ public class ClientHandler implements Runnable
     this.input = new BufferedReader(inputStreamReader);
   }
 
-  @Override public void run()
-  {
+  @Override public void run() {
     try{
       while(!socket.isClosed()) {
       String message = input.readLine();
       if(message == null)
         break;
-
-        System.out.println("Received from: " + socket.getRemoteSocketAddress() + " This message: " + message);
+      System.out.println("Received from: " + socket.getRemoteSocketAddress() + " This message: " + message);
+      output.println(message);
       socket.close();
-
-
       }
     }
-    catch (IOException e)
-    {
+    catch (IOException e) {
       e.printStackTrace();
     }
   }

@@ -1,6 +1,7 @@
 package client.mediator;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 
 public class MessageReceiver implements Runnable {
   private BufferedReader reader;
@@ -9,12 +10,15 @@ public class MessageReceiver implements Runnable {
     this.client = client;
     reader = in;
   }
-
   @Override public void run() {
-
+    try {
+      listen();
+    }catch (IOException e){
+      e.printStackTrace();
+    }
   }
-  public void listen(){
-
-
+  public void listen() throws IOException {
+    while(true)
+    client.receiveBroadcast(reader.readLine());
   }
 }

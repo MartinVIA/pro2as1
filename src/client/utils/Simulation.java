@@ -1,16 +1,13 @@
 package client.utils;
 
-import client.model.ReservedState;
-import client.model.Vinyl;
+import client.model.*;
 import client.view.ViewHandler;
 import client.viewModel.VinylViewModel;
 
-class Simulation implements Runnable{
-
-    private int delay;
-    private String name;
+public class Simulation implements Runnable{
     private ViewHandler view;
     private int vinylIndex;
+    private char messageType;
 
     public Simulation(ViewHandler view,String name,int delay,int vinylIndex) {
         this.view=view;
@@ -18,32 +15,28 @@ class Simulation implements Runnable{
         this.name=name;
         this.vinylIndex=vinylIndex;
     }
-    private VinylViewModel findVinyl(int index){
-        return view.getViewModelFactory().getVinylListViewModel().getVinylList().get(index);
-    }
-    
-    
     @Override
-    public void run(){
-        try {
-            System.out.println("running thread "+name);
-            Thread.sleep(delay);
-            System.out.println(name+". . .");
-            Thread.sleep(delay);
-
-            // view.getViewModelFactory().getVinylListViewModel().getVinylList().get(vinylIndex).setCurrentVinylState(new ReservedState());
-            // view.getViewModelFactory().getVinylListViewModel().getVinylList().get(vinylIndex).setReserveName(name);  
-            findVinyl(vinylIndex).setCurrentVinylState("ReservedState");
-            findVinyl(vinylIndex).setReserveName(name);
-            
-            Thread.sleep(delay);
-            view.getViewModelFactory().getVinylListViewModel().reload();
-
-            Thread.sleep(delay);
-            System.out.println("thread should be finished..");
-        } catch (InterruptedException e) {
-        System.out.println("interruption error");
-        }
+    public synchronized void run()  {
+          switch(messageType){
+            case '0' : {//Available
+              view.getViewModelFactory().getVinylListViewModel().getVinylList().get(vinylIndex).setCurrentVinylState(new AvailableState());
+              break;
+            }
+            case '1' : {//Reserve
+              view.getViewModelFactory().getVinylListViewModel().getVinylList().get(vinylIndex).setCurrentVinylState(new ReservedState());
+              break;
+            }
+            case '2' : {//Borrow
+              view.getViewModelFactory().getVinylListViewModel().getVinylList().get(vinylIndex).setCurrentVinylState(new BorrowedState());
+              break;
+            }
+            case '3' : {//Remove
+              view.getViewModelFactory().getVinylListViewModel().getVinylList().get(vinylIndex).setCurrentVinylState(new RemovedState());
+              break;
+            }
+            default:{
+              break;
+            }
+          }
     }
-
 }

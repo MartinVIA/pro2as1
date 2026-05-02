@@ -13,12 +13,7 @@ public class Client implements ServerModel {
   private final BufferedReader reader;
   private final MessageReceiver receiver;
   private final PropertyChangeSupport support;
-  private enum actionType {
-    Available,
-    Reserve,
-    Borrow,
-    Remove
-  }
+  private ViewHandler viewHandler;
 
   public Client(String host, int port)  throws IOException {
     socket = new Socket(host, port);
@@ -33,34 +28,16 @@ public class Client implements ServerModel {
     thread.setDaemon(true);
     thread.start();
   }
+public void sendMessage(int index) throws IOException{
+    //Send index in the list and action taken as a single String to the Server
+    support.firePropertyChange();
+}
   public void receiveBroadcast(String string){
     char messageType = string.charAt(0);
     String messageIndex = string.substring(1);
-/*TODO Create new thread based on messageType, and index(of the vinyl),
-    there are many ways to do this but I think a modified version of the Simulation works best,
-    we can make Client have an instance of ViewHandler, for model access
-    * */
-    switch(messageType){
-      case '0' : {//Available
-
-        break;
-      }
-      case '1' : {//Reserve
-
-      }
-      case '2' : {//Borrow
-
-        break;
-      }
-      case '3' : {//Remove
-
-        break;
-      }
-      default:{
-
-        break;
-      }
-    }
+    int vinylIndex = Integer.parseInt(messageIndex);
+    //Client makes a change --> Sends message to Server --> Server receives messages, forwards it to all other Clients --> Clients receive message, make relevant changes
+    Simulation simulation = new Simulation(viewHandler,messageType,vinylIndex);
   }
   public void addPropertyChangeListener(PropertyChangeListener listener) {
     support.addPropertyChangeListener(listener);
