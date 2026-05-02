@@ -90,7 +90,7 @@ public class ViewHandler {
   }
 
 
-  public ViewModelFactory getViewModelFactory(){
+  public synchronized ViewModelFactory getViewModelFactory(){
     return viewModelFactory;
   }
   

@@ -9,11 +9,9 @@ public class Simulation implements Runnable{
     private int vinylIndex;
     private char messageType;
 
-    public Simulation(ViewHandler view,String name,int delay,int vinylIndex) {
-        this.view=view;
-        this.delay=delay;
-        this.name=name;
-        this.vinylIndex=vinylIndex;
+    public Simulation(ViewHandler view,char messageType,int vinylIndex) {
+       this.view = view;
+       this.vinylIndex = vinylIndex;
     }
     @Override
     public synchronized void run()  {

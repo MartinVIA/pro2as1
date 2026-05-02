@@ -1,5 +1,9 @@
 package client.mediator;
 
+import client.model.AvailableState;
+import client.utils.Simulation;
+import client.view.ViewHandler;
+
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.*;

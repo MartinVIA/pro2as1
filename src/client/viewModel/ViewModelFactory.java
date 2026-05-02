@@ -18,10 +18,10 @@ public class ViewModelFactory {
     editVinylViewModel = new EditVinylViewModel(manager);
   }
 
-  public VinylListViewModel getVinylListViewModel()
+  public synchronized VinylListViewModel getVinylListViewModel()
   { return vinylListViewModel;}
 
-  public EditVinylViewModel getEditVinylViewModel() {
+  public synchronized EditVinylViewModel getEditVinylViewModel() {
     return editVinylViewModel;
   }
 }
