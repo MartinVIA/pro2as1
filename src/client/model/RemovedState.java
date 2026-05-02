@@ -14,6 +14,6 @@ public class RemovedState implements VinylState {
     //Leave it blank
   }
   public String toString(){
-    return "Removed";
+    return "RemovedState";
   }
 }

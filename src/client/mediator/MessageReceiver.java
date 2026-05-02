@@ -18,7 +18,9 @@ public class MessageReceiver implements Runnable {
     }
   }
   public void listen() throws IOException {
-    while(true)
-    client.receiveBroadcast(reader.readLine());
+    String message;
+    while ((message = reader.readLine()) != null) {
+      client.receiveBroadcast(message);
+    }
   }
 }

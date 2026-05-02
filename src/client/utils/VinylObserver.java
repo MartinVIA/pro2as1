@@ -16,12 +16,7 @@ public class VinylObserver implements PropertyChangeListener {
   }
 
   @Override public void propertyChange(java.beans.PropertyChangeEvent propertyChangeEvent){
-    if(name.equals("Client")){
-      writer.println(propertyChangeEvent.toString());
-    }
-    else{
     System.out.println("State changed from "+propertyChangeEvent.getOldValue()+" to "+propertyChangeEvent.getNewValue());
-    }
   }
 
 }

@@ -12,7 +12,6 @@ import javax.swing.*;
 public class VinylListViewModel {
   private VinylModel model;
   private ObservableList<VinylViewModel> vinylList;
-  private ModelManager libraryManager;
   private ViewModelFactory viewModelFactory;
 
   public VinylListViewModel( VinylModel model, ViewModelFactory viewModelFactory ) {

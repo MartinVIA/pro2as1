@@ -1,4 +1,5 @@
 package client.view;
+import client.mediator.Client;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -44,11 +45,9 @@ public class EditVinylController {
   public void handleAvailableButton(){
     viewModel.setAvailableVinylState();
   }
-
   public void handleReservedButton(){
     viewModel.setReservedVinylState();
   }
-
   public void handleBorrowedButton(){
     viewModel.setBorrowedVinylState();
   }
@@ -61,9 +60,9 @@ public class EditVinylController {
   }
   public void handleSave(){
     viewModel.setReserveName(reserveNameField.getText());
+    Client.sendMessage(viewModel.getTitleProperty().toString(), viewModel.getVinylStateProperty().toString());
     viewHandler.openView("vinylList");
   }
-
   //resets the window by clearing all the fields
   public void reset() {
 

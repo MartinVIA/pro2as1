@@ -3,7 +3,7 @@ package client.model;
 public class AvailableState implements VinylState {
 
   @Override public String toString() {
-    return "Available";
+    return "AvailableState";
   }
 
   @Override public void reserveVinyl(Vinyl vinyl){

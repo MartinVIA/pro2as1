@@ -3,7 +3,7 @@ package client.model;
 public class BorrowedReservedState implements VinylState {
 
   public String toString(){
-    return "Borrowed Reserved";
+    return "BorrowedReservedState";
   }
   @Override public void reserveVinyl(Vinyl vinyl) {
     //Leave it blank

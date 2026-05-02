@@ -1,22 +1,27 @@
 package client.mediator;
 
 import client.model.AvailableState;
+import client.model.Vinyl;
 import client.utils.Simulation;
 import client.view.ViewHandler;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.*;
+import java.lang.reflect.Type;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 
-
-public class Client implements ServerModel {
+public class Client {
   private final Socket socket;
-  private final PrintWriter writer;
+  private static PrintWriter writer = null;
   private final BufferedReader reader;
   private final MessageReceiver receiver;
   private final PropertyChangeSupport support;
+  private final Gson gson = new Gson();
   private ViewHandler viewHandler;
 
   public Client(String host, int port)  throws IOException {
@@ -32,33 +37,20 @@ public class Client implements ServerModel {
     thread.setDaemon(true);
     thread.start();
   }
-public void sendMessage(int index) throws IOException{
-    //Send index in the list and action taken as a single String to the Server
-    support.firePropertyChange();
-}
-  public void receiveBroadcast(String string){
-    char messageType = string.charAt(0);
-    String messageIndex = string.substring(1);
-    int vinylIndex = Integer.parseInt(messageIndex);
-    //Client makes a change --> Sends message to Server --> Server receives messages, forwards it to all other Clients --> Clients receive message, make relevant changes
-    Simulation simulation = new Simulation(viewHandler,messageType,vinylIndex);
+  public static void sendMessage(String vinylTitle, String stateName) {
+    writer.println(vinylTitle + ":" + stateName);
   }
+
+public void receiveBroadcast(String string) {
+    Type listType = new TypeToken<ArrayList<Vinyl>>() {}.getType();
+    ArrayList<Vinyl> updatedList = gson.fromJson(string, listType);
+      support.firePropertyChange("vinylList", null, updatedList);
+    }
   public void addPropertyChangeListener(PropertyChangeListener listener) {
     support.addPropertyChangeListener(listener);
   }
   public void removePropertyChangeListener(PropertyChangeListener listener) {
     support.removePropertyChangeListener(listener);
-  }
-
-  @Override public void connect() {
-
-  }
-
-  @Override public void disconnect() {
-
-  }
-  @Override public String convert() {
-    return "";
   }
   public Socket getSocket()
   {

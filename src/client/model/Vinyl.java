@@ -9,7 +9,7 @@ public class Vinyl {
     private String reserveName;
     private VinylState currentVinylState;
     private static final String currentVinylStateProperty = "VinylState";
-    private final PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
+    private transient final PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
     public Vinyl(String title, String artist, int releaseYear){
       this.title = title;
