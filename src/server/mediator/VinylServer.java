@@ -37,6 +37,7 @@ public class VinylServer {
       Thread thread = new Thread(handler);
       thread.setDaemon(true);
       thread.start();
+      System.out.println("Connection Established");
     }
   }
 }

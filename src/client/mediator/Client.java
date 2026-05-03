@@ -1,7 +1,6 @@
 package client.mediator;
 
-import client.model.AvailableState;
-import client.model.Vinyl;
+import client.model.*;
 import client.utils.Simulation;
 import client.view.ViewHandler;
 import com.google.gson.Gson;
@@ -37,15 +36,22 @@ public class Client {
     thread.setDaemon(true);
     thread.start();
   }
+  public void notifyReady(){
+    writer.println("READY");
+  }
   public static void sendMessage(String vinylTitle, String stateName) {
     writer.println(vinylTitle + ":" + stateName);
   }
 
-public void receiveBroadcast(String string) {
+  public void receiveBroadcast(String string) {
     Type listType = new TypeToken<ArrayList<Vinyl>>() {}.getType();
     ArrayList<Vinyl> updatedList = gson.fromJson(string, listType);
-      support.firePropertyChange("vinylList", null, updatedList);
+    //You see because VinylState is transient, we need to restore the VinylState after deserialization
+    for (Vinyl vinyl : updatedList) {
+      vinyl.restoreState();
     }
+    support.firePropertyChange("vinylList", null, updatedList);
+  }
   public void addPropertyChangeListener(PropertyChangeListener listener) {
     support.addPropertyChangeListener(listener);
   }

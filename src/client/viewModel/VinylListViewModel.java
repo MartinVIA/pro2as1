@@ -31,6 +31,7 @@ public class VinylListViewModel {
     client.addPropertyChangeListener(event -> {
       if (event.getPropertyName().equals("vinylList")) {
         ArrayList<Vinyl> updatedList = (ArrayList<Vinyl>) event.getNewValue();
+        model.setVinylList(updatedList);
         Platform.runLater(() -> {
           vinylList.clear();
           for (Vinyl vinyl : updatedList) {

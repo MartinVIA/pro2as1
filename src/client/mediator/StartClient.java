@@ -19,5 +19,6 @@ public class StartClient extends Application {
     ViewHandler viewHandler = new ViewHandler();
     viewHandler.setClientforListViewModel(client);
     viewHandler.start(stage);
+    client.notifyReady();
   }
 }

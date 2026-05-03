@@ -29,20 +29,22 @@ public class ClientHandler implements Runnable {
   }
   @Override
   public void run() {
-    output.println(gson.toJson(masterList));
-    String message;
     try {
+      String ready = input.readLine();
+      if("READY".equals(ready)){
+      output.println(gson.toJson(masterList));
+      System.out.println("List sent");
+      }
+      String message;
       while ((message = input.readLine()) != null) {
-        String[] parts = message.split(":");
-        String title = parts[0];
-        String stateName = parts[1];
-
-        for (Vinyl vinyl : masterList) {
-          if (vinyl.getTitle().equals(title)) {
-            vinyl.setCurrentVinylState(resolveState(stateName));
-          }
+      String[] parts = message.split(":");
+      String title = parts[0];
+      String stateName = parts[1];
+      for (Vinyl vinyl : masterList) {
+        if (vinyl.getTitle().equals(title)) {
+          vinyl.setCurrentVinylState(resolveState(stateName));
         }
-
+      }
         String updatedJson = gson.toJson(masterList);
         for (ClientHandler handler : handlerList) {
           handler.output.println(updatedJson);

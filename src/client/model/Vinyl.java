@@ -10,7 +10,6 @@ public class Vinyl {
     private transient VinylState currentVinylState;
     private String vinylStateName;
     private static final String currentVinylStateProperty = "VinylState";
-    private transient final PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
     public Vinyl(String title, String artist, int releaseYear){
       this.title = title;
@@ -39,12 +38,19 @@ public class Vinyl {
       return releaseYear;
     }
 
-    public void setCurrentVinylState(VinylState newVinylState){
-      VinylState oldState = currentVinylState;
-      currentVinylState = newVinylState;
-      //When Vinyl State changes, get the name of the old State, and the name of the new state
-      propertyChangeSupport.firePropertyChange(currentVinylStateProperty, oldState.toString(), currentVinylState.toString());
+    public void setCurrentVinylState(VinylState newVinylState) {
+     VinylState oldState = currentVinylState;
+     currentVinylState = newVinylState;
+     vinylStateName = newVinylState.getClass().getSimpleName();
     }
+  public void restoreState() {
+    currentVinylState = switch (vinylStateName) {
+      case "BorrowedState"    -> new BorrowedState();
+      case "ReservedState"    -> new ReservedState();
+      case "RemovedState"     -> new RemovedState();
+      default                 -> new AvailableState();
+    };
+  }
     public VinylState getCurrentVinylState(){
       return currentVinylState;
     }
@@ -54,11 +60,4 @@ public class Vinyl {
     public String getReserveName(){
       return reserveName;
     }
-    public void addPropertyChangeListener(PropertyChangeListener listener){
-    propertyChangeSupport.addPropertyChangeListener(listener);
-    }
-    public void removePropertyChangeListener(PropertyChangeListener listener){
-    propertyChangeSupport.removePropertyChangeListener(listener);
-    }
-
 }
