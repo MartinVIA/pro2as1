@@ -1,6 +1,7 @@
 package client.view;
 
 //import client.utils.Simulation;
+import client.mediator.Client;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Region;
@@ -18,6 +19,9 @@ public class ViewHandler {
   public ViewHandler(ViewModelFactory viewModelFactory) {
     this.viewModelFactory = viewModelFactory;
     currentScene = new Scene(new Region());
+  }
+  public void setClientforListViewModel(Client client){
+    viewModelFactory.getVinylListViewModel().setClient(client);
   }
   public ViewHandler(){
     this.viewModelFactory = new ViewModelFactory();

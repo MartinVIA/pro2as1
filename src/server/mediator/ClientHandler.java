@@ -57,9 +57,9 @@ public class ClientHandler implements Runnable {
   }
   private VinylState resolveState(String stateName) {
     return switch (stateName) {
-      case "AvailableState"   -> new AvailableState();
-      case "BorrowedState"    -> new BorrowedState();
-      case "ReservedState"    -> new ReservedState();
+      case "AvailableState" -> new AvailableState();
+      case "BorrowedState" -> new BorrowedState();
+      case "ReservedState" -> new ReservedState();
       case "RemovedState" -> new RemovedState();
       default -> throw new IllegalArgumentException(" State name invalid: " + stateName);
     };

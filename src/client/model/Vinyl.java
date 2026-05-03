@@ -7,7 +7,8 @@ public class Vinyl {
     private String artist;
     private int releaseYear;
     private String reserveName;
-    private VinylState currentVinylState;
+    private transient VinylState currentVinylState;
+    private String vinylStateName;
     private static final String currentVinylStateProperty = "VinylState";
     private transient final PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
@@ -17,6 +18,7 @@ public class Vinyl {
       this.releaseYear = releaseYear;
       reserveName = "";
       currentVinylState = new AvailableState();
+      vinylStateName = currentVinylState.toString();
     }
     public void setTitle(String title){
         this.title = title;

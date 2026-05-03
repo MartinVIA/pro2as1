@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class Client {
   private final Socket socket;
-  private static PrintWriter writer = null;
+  private static PrintWriter writer;
   private final BufferedReader reader;
   private final MessageReceiver receiver;
   private final PropertyChangeSupport support;

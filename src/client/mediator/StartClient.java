@@ -1,31 +1,23 @@
 package client.mediator;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.Socket;
-import java.util.Scanner;
-
 import javafx.application.Application;
 import javafx.stage.Stage;
 import client.view.ViewHandler;
 
+import java.io.IOException;
+
 public class StartClient extends Application {
+  private static Client client;
 
   public static void main(String[] args) throws IOException {
     final int PORT = 4026;
-    Scanner scanner = new Scanner(System.in);
-    Socket clientSocket = new Socket("localhost", PORT);
-    BufferedReader input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-    PrintWriter output = new PrintWriter(clientSocket.getOutputStream(),true);
-    clientSocket.close();
-    scanner.close();
+    client = new Client("localhost", PORT);
     launch(args);
   }
- public void start(Stage stage) throws Exception {
+
+  public void start(Stage stage) throws Exception {
     ViewHandler viewHandler = new ViewHandler();
+    viewHandler.setClientforListViewModel(client);
     viewHandler.start(stage);
   }
 }
-

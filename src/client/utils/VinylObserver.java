@@ -4,15 +4,8 @@ import java.beans.PropertyChangeListener;
 import java.io.PrintWriter;
 
 public class VinylObserver implements PropertyChangeListener {
-  private final String name;
-  private final PrintWriter writer;
-  public VinylObserver(String name){
-    this.name = name;
-    writer = null;
-  }
-  public VinylObserver(String name, PrintWriter writer){
-    this.name = name;
-    this.writer = writer;
+
+  public VinylObserver( ){
   }
 
   @Override public void propertyChange(java.beans.PropertyChangeEvent propertyChangeEvent){
