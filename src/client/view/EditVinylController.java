@@ -60,7 +60,7 @@ public class EditVinylController {
   }
   public void handleSave(){
     viewModel.setReserveName(reserveNameField.getText());
-    Client.sendMessage(viewModel.getTitleProperty().toString(), viewModel.getVinylStateProperty().toString());
+    Client.sendMessage(viewModel.getTitleProperty().get(),viewModel.getVinylStateProperty().get().getClass().getSimpleName());
     viewHandler.openView("vinylList");
   }
   //resets the window by clearing all the fields

@@ -26,14 +26,16 @@ public class ClientHandler implements Runnable {
     InputStream inputStream = socket.getInputStream();
     InputStreamReader inputStreamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
     this.input = new BufferedReader(inputStreamReader);
-  }
+    ServerLog.getInstance().setGson(gson);
+    ServerLog.makeFile("log1.json","D:\\VIA\\IntelliJprojects\\pro2as1\\src\\server\\mediator\\log.json\\");
+    }
   @Override
   public void run() {
     try {
       String ready = input.readLine();
       if("READY".equals(ready)){
       output.println(gson.toJson(masterList));
-      System.out.println("List sent");
+      System.out.println("Masterlist sent to "+socket.getRemoteSocketAddress());
       }
       String message;
       while ((message = input.readLine()) != null) {
@@ -49,6 +51,8 @@ public class ClientHandler implements Runnable {
         for (ClientHandler handler : handlerList) {
           handler.output.println(updatedJson);
         }
+        ServerLog.addData("Title: "+title+", has been changed to "+stateName+" for "+socket.getRemoteSocketAddress()+".", "D:\\VIA\\IntelliJprojects\\pro2as1\\src\\server\\mediator\\log.json\\");
+        System.out.println("Attempted to write: "+"Title: "+title+", has been changed to: "+stateName+" for "+socket.getRemoteSocketAddress()+".");
       }
     } catch (SocketException e) {
       System.out.println("Client disconnected: " + socket.getRemoteSocketAddress());
